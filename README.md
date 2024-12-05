@@ -83,14 +83,13 @@ This repository contains configuration files for various tools and environments 
    • Create subdirectories for each tool (e.g., nvim, tmux).
    • Place the actual dotfiles in the corresponding directories
 3. Link Dotfiles:
+   Navigate to the root of your dotfiles directory and use stow to create symlinks:
 
-Navigate to the root of your dotfiles directory and use stow to create symlinks:
-
-```
-stow nvim
-stow tmux
-stow zsh
-```
+   ```
+   stow nvim
+   stow tmux
+   stow zsh
+   ```
 
 Or you can use `stow .` to execute all at once.
 
