@@ -29,12 +29,17 @@ keymap.set("n", "<leader>s=", "<C-w>=", { desc = "Set equally pane" })
 local keymap = vim.keymap -- for conciseness
 
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
+keymap.set("n", "T", "gg", { desc = "Save file" })
 keymap.set("n", "<M-`>", "<C-w>w", { desc = "Move to other pane" })
+keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move to left pane" })
+keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move to right pane" })
+keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move to up pane" })
+keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move to down pane" })
 keymap.set("n", "<M-t>", ":tabnew<CR>", { desc = "Create new tab" })
 keymap.set("n", "<M-]>", ":tabnext<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
-keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" })
+-- keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
 keymap.set("n", "<M-1>", ":e!<CR>", { desc = "Reset file" })
 keymap.set("n", "<M-=>", "<C-w>=", { desc = "Adjust panes equally" })
 keymap.set("n", "<M-q>", ":q<CR>", { desc = "Quit current window" })
@@ -83,7 +88,8 @@ keymap.set("n", "nh", ":noh<CR>", { desc = "Clear highlighted search" })
 -- keymap file-explorer
 keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 -- keymap.set("n", "<leader>ec", "<cmd>NvimTreeClose<CR>", { desc = "Close explorer" }) -- toggle file explorer
-keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+keymap.set("n", "<leader>eF", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
 keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 
 -- keymaps for telescope fzf
