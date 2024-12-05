@@ -1,0 +1,7 @@
+-- Using comment file instead of this
+-- return {
+--   {
+--     "tpope/vim-commentary", -- Easy commenting
+--     desc = "Plugin for toggling comments",
+--   }
+-- }

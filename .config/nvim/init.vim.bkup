@@ -1,0 +1,428 @@
+:set number
+" :set relativenumber
+:set tabstop=4
+:set shiftwidth=4
+:set smartindent
+:set smartcase
+:set smarttab
+:set softtabstop=4
+:set mouse=a
+:set ignorecase
+" :set expandtab
+" :set nocompatible
+" syntax on
+" filetype plugin indent on
+call plug#begin()
+
+" Plug 'bencor/vim-jq'
+" Plug 'gennaro-tedesco/vim-jqplay' " Using jq in vim mode --> not able to
+" clone
+" Plug 'kannokanno/jq-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'gennaro-tedesco/nvim-jqx'
+" Plug 'elzr/vim-json'
+" Plug 'git@github.com:gennaro-tedesco/vim-jqplay.git'
+" Plug 'git@github.com:bencor/vim-jq.git'
+Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
+Plug 'https://github.com/preservim/nerdtree'|  
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' " NerdTree'
+Plug 'luochen1990/rainbow'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'vim-airline/vim-airline-themes'
+Plug 'https://github.com/lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
+" Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim'
+Plug 'https://github.com/neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}  " Auto Completion
+Plug 'https://github.com/sainnhe/everforest.git'
+Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
+Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ } " please install cargo with command 'brew install rust'
+Plug 'junegunn/fzf'
+Plug 'tpope/vim-surround' 
+Plug 'APZelos/blamer.nvim'
+Plug 'towolf/vim-helm'
+Plug 'neoclide/coc-git'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/vim-gitbranch'
+" Plug 'vim-scripts/vim-gitgutter'
+" Plug 'vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'neomake/neomake'
+Plug 'vim-scripts/groovy.vim'
+Plug 'bagrat/vim-buffet'
+" Plug 'xuyuanp/git-nerdtree'
+Plug 'chrisbra/csv.vim'
+" Plug 'mechatroner/rainbow_csv'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'https://github.com/0xStabby/chatgpt-vim'
+Plug 'qpkorr/vim-bufkill'
+Plug 'hlissner/vim-multiedit'
+
+set encoding=UTF-8
+
+call plug#end()
+
+" nnoremap <C-f> :NERDTreeFocus<CR>
+" nnoremap <C-n> :NERDTree<CR>
+nnoremap <M-b> :NERDTreeToggle<CR>
+" nnoremap <C-l> :call CocActionAsync('jumpDefinition')<CR>
+
+nmap <F8> :TagbarToggle<CR>
+
+" :set completeopt-=preview " For No Previews
+
+" :colorscheme everforest
+" :colorscheme delek 
+" :colorscheme onehalfdark
+:colorscheme dracula
+
+let base16colorspace=256  " Access colors present in 256 colorspace
+" let g:NERDTreeDirArrowExpandable="+"
+" let g:NERDTreeDirArrowCollapsible="~"
+" let NERDTreeMapOpenInTab='\r'
+let g:NERDTreeWinPos = "left"
+let NERDTreeWinSize = 40
+let NERDTreeShowHidden=1
+let NERDTreeShowBookmarks=0
+autocmd StdinReadPre * let s:std_in=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeToggle | endif
+autocmd BufEnter NERD_tree_* | execute 'normal R' | execute 'normal R'
+
+" --- Just Some Notes ---
+" :PlugClean :PlugInstall :UpdateRemotePlugins
+"
+" :CocInstall coc-python
+" :CocInstall coc-clangd
+" :CocInstall coc-snippets
+" :CocCommand snippets.edit... FOR EACH FILE TYPE
+
+" multiple cursors
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-N>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+" let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline#extensions#tabline#enabled = 1
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+let g:LanguageClient_serverCommands = {
+    \ 'terraform': ['terraform-ls', 'serve'],
+    \ }
+
+" Auto brackets
+" inoremap ( ()<Left>
+" inoremap [ []<Left>
+" inoremap { {}<Left>
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
+
+" Git Blame
+let g:blamer_enabled = 1
+let g:blamer_delay = 100
+let g:blamer_show_in_insert_modes = 0
+let g:blamer_show_in_visual_modes = 0
+" highlight Blamer guifg=blue
+
+" Toggle indent rainbow
+set ts=2 sw=2 noet nolist
+let g:indent_guides_enable_on_vim_startup=0
+" let g:indent_guides_start_level=1
+let g:indent_guides_guide_size=2
+let g:indent_guides_auto_colors = 1
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd     ctermbg=236
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven		ctermbg=235
+"
+" Set a dimmer color for the odd layers
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd     ctermbg=237 guibg=#3c3c3c " Slightly dim gray color
+
+" Set a solid color for the even layers (white in this case)
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven    ctermbg=black guibg=#000000 " Solid white color for even layers
+
+nnoremap <M-i> :IndentGuidesToggle<CR>
+" Highlight when yank line
+" let g:highlightedyank_highlight_duration = 1000
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=350})
+augroup END
+
+" switch buffer pane
+nmap tn :tabnew<CR> " create new tab
+nmap <M-t> :tabNext<CR> " move to other tab
+nmap <M-`> <C-w>w " move to other pane
+nmap <M-r> <C-w>r " swap pane
+nmap <M-m> gcc " comment
+nmap <M-1> :e!<CR> " reset file
+nmap <M-=> <C-w>= " making pane equally adjusted
+nmap T gg
+nnoremap <M-.> :bn<CR> " go right buff tab
+nnoremap <M-,> :bp<CR> " go left buff tab
+" nmap gb :bn<CR>
+" nmap gB :bp<CR>
+" nnoremap gw <Nop>
+" nnoremap  :vert sb <CR>
+" nmap gwh <C-w>h
+" nmap gwj <C-w>j
+" nmap gwk <C-w>k
+" nmap gwl <C-w>l
+
+" Diff function
+nmap dt :diffthis<CR> " select current pane to diff mode
+nmap do :diffoff<CR> " quite from diff mode
+
+" show all buffers
+nnoremap <M-a> :Buffers<CR>
+
+" Setup Terraform autocomplete
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" (Optional)Remove Info(Preview) window
+set completeopt-=preview
+
+" (Optional)Hide Info(Preview) window after completions
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" (Optional) Enable terraform plan to be include in filter
+let g:syntastic_terraform_tffilter_plan = 1
+
+" (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+let g:terraform_completion_keys = 1
+
+" (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+let g:terraform_registry_module_completion = 0
+
+" coc.nvim config for tab
+inoremap <silent><expr> <TAB>
+\ coc#pum#visible() ? coc#_select_confirm() :
+\ coc#expandableOrJumpable() ?
+\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
+
+function! s:check_back_space() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" Markdown
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
+
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 0
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" for path with space
+" valid: `/path/with\ space/xxx`
+" invalid: `/path/with\\ space/xxx`
+" default: ''
+let g:mkdp_browser = ''
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 0
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+" disable_filename: if disable filename header for preview page, default: 0
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0,
+    \ 'toc': {}
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+let g:mkdp_markdown_css = expand("~/github-markdown.css")
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or empty for random
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
+
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
+
+" set default theme (dark or light)
+" By default the theme is define according to the preferences of the system
+let g:mkdp_theme = 'dark'
+
+" groovy syntax for jenkinsfile
+autocmd BufNewFile,BufRead *[jJ]enkinsfile,*[jJ]enkinsfiles set syntax=groovy
+
+" " NEOMAKE
+" " When writing a buffer (no delay).
+" call neomake#configure#automake('w')
+" " When writing a buffer (no delay), and on normal mode changes (after 750ms).
+" call neomake#configure#automake('nw', 750)
+" " When reading a buffer (after 1s), and when writing (no delay).
+" call neomake#configure#automake('rw', 1000)
+" " Full config: when writing or reading a buffer, and on changes in insert and
+" " normal mode (after 500ms; no delay when writing).
+" call neomake#configure#automake('nrwi', 500)
+" let g:neomake_open_list = 2
+
+" " deoplete
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
+
+" copying full path of file
+command! YankPath let @+ = expand('%:p') | echo "Copied file path: " . @+
+command! YankDir let @+ = expand('%:p:h') | echo "Copied directory: " . @+
+command! CleanBuff %bd|e#
+command! -nargs=* -complete=buffer Cp :vert diffsplit <args>
+
+" Set groovy syntax
+autocmd BufRead,BufNewFile /Users/poomkrit/git/jenkins-pipeline-config/Jenkinsfile/* set syntax=groovy
+
+" Automatically create a vertical split and open new files on the right
+nnoremap <Leader>vs :vsplit<CR>:wincmd L<CR>
+" autocmd BufReadPost * vert vsplit | wincmd L
+
+" using grep ability in vim with fzf
+command! -bang -nargs=* Fgrep call fzf#vim#grep('rg --hidden --column --line-number --no-heading --color=always '.shellescape(<q-args>), 0, {})
+nnoremap <M-f> :Files<CR>
+nnoremap <M-d> :Fgrep<CR>
+
+" Binding key map for BD command from plugin `vim-bufkill` to not closing when
+" using NERDTree
+nnoremap <Leader>bd :BD<CR>
+nnoremap <M-w> :BD<CR>
+nnoremap <M-W> :BD!<CR>
+
+" use yank copy to clipboard
+nnoremap y "+y
+vnoremap y "+y
+
+" shortcut to copy path
+nnoremap <M-c> :YankPath<CR>
+nnoremap <M-C> :YankDir<CR>
+
+" save file
+nnoremap <M-s> :w<CR>
+
+" quite vim
+nnoremap <M-q> :q<CR>
+nnoremap <M-Q> :qa<CR>
+
+" quit highlighted word
+nmap nh :noh<CR>
