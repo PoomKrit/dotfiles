@@ -99,7 +99,13 @@ Or you can use `stow .` to execute all at once.
    Example:
    • ~/.config/nvim/ → Points to dotfiles/nvim/.config/nvim/
    • ~/.tmux.conf → Points to dotfiles/tmux/.tmux.conf
-5. Unlink Dotfiles (if needed):
+5. Using option `--adopt` in case that you don't want to remove real config file in your machine
+
+```
+stow --adopt <file-or-directory-or-dot>
+```
+
+6. Unlink Dotfiles (if needed):
 
 ```
 stow -D nvim
