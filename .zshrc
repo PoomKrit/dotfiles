@@ -325,7 +325,8 @@ _fzf_comprun() {
 [[ ! -f ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh ]] || source ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh
 
 # Make the prompt stay almost on top
-source /Users/poomkrit/github/almostontop/almostontop.plugin.zsh
+# source /Users/poomkrit/github/almostontop/almostontop.plugin.zsh
+
 # Starship
 # export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # eval "$(starship init zsh)"
