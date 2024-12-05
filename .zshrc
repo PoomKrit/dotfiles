@@ -324,6 +324,8 @@ _fzf_comprun() {
 # To customize prompt, run `p10k configure` or edit ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh.
 [[ ! -f ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh ]] || source ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh
 
+# Make the prompt stay almost on top
+source /Users/poomkrit/github/almostontop/almostontop.plugin.zsh
 # Starship
 # export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # eval "$(starship init zsh)"
