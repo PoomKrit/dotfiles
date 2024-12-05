@@ -1,41 +1,13 @@
--- return {
--- 	{
--- 		"iamcco/markdown-preview.nvim",
--- 		build = "cd app && npm install",
--- 		enabled = true,
--- 		ft = { "markdown" },
--- 		config = function()
--- 			-- Automatically start Markdown Preview
--- 			vim.g.mkdp_auto_start = 1
---
--- 			-- Automatically close Markdown Preview when buffer is closed
--- 			vim.g.mkdp_auto_close = 1
---
--- 			-- Use dark theme for the preview
--- 			vim.g.mkdp_theme = "dark"
---
--- 			-- Keymap to manually toggle Markdown Preview
--- 			vim.api.nvim_set_keymap("n", "<leader>mp", "<cmd>MarkdownPreview<CR>", { noremap = true, silent = true })
--- 		end,
--- 	},
--- }
-
 return {
 	"davidgranstrom/nvim-markdown-preview",
-	build = "cd app && npm install",
-	enabled = true,
-	ft = { "markdown" },
 	config = function()
-		-- Automatically start Markdown Preview
-		vim.g.mkdp_auto_start = 1
-
-		-- Automatically close Markdown Preview when buffer is closed
-		vim.g.mkdp_auto_close = 1
-
-		-- Use dark theme for the preview
-		vim.g.mkdp_theme = "dark"
-
-		-- Keymap to manually toggle Markdown Preview
+		-- Key mapping to toggle Markdown preview
 		vim.api.nvim_set_keymap("n", "<leader>mp", "<cmd>MarkdownPreview<CR>", { noremap = true, silent = true })
+
+		-- Optionally configure custom settings for the plugin
+		vim.g.nvim_markdown_preview_theme = "solarized-light" -- Theme for preview
+		vim.g.nvim_markdown_preview_auto_start = 1 -- Automatically start preview when opening markdown file
+		-- vim.g.nvim_markdown_preview_browser = "firefox" -- Choose your browser
 	end,
+	ft = { "markdown" }, -- Load the plugin only for markdown files
 }
