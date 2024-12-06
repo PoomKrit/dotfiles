@@ -85,7 +85,7 @@ This repository contains configuration files for various tools and environments 
 3. Link Dotfiles:
    Navigate to the root of your dotfiles directory and use stow to create symlinks:
 
-   ```
+   ```bash
    stow nvim
    stow tmux
    stow zsh
@@ -100,13 +100,13 @@ Or you can use `stow .` to execute all at once.
    • ~/.tmux.conf → Points to dotfiles/tmux/.tmux.conf
 5. Using option `--adopt` in case that you don't want to remove real config file in your machine
 
-```
+```bash
 stow --adopt <file-or-directory-or-dot>
 ```
 
 6. Unlink Dotfiles (if needed):
 
-```
+```bash
 stow -D nvim
 ```
 
@@ -116,19 +116,19 @@ stow -D nvim
 
 1. Clone the repository:
 
-```
+```bash
 git clone https://github.com/PoomKrit/dotfiles.git
 ```
 
 2. Navigate to the dotfiles directory:
 
-```
+```bash
 cd ~/dotfiles
 ```
 
 3. Use stow to apply configurations:
 
-```
+```bash
 stow nvim tmux zsh
 ```
 
