@@ -79,8 +79,8 @@ This repository contains configuration files for various tools and environments 
 
    ```
 
-2. Organize Dotfiles:
-   • Create subdirectories for each tool (e.g., nvim, tmux).
+2. Organize Dotfiles:<br/>
+   • Create subdirectories for each tool (e.g., nvim, tmux).<br/>
    • Place the actual dotfiles in the corresponding directories
 3. Link Dotfiles:
    Navigate to the root of your dotfiles directory and use stow to create symlinks:
@@ -95,8 +95,8 @@ Or you can use `stow .` to execute all at once.
 
 4. Verify Symlinks:
    After running stow, the dotfiles will be symlinked to their respective locations in the home directory.
-   Example:
-   • ~/.config/nvim/ → Points to dotfiles/nvim/.config/nvim/
+   Example:<br/>
+   • ~/.config/nvim/ → Points to dotfiles/nvim/.config/nvim/<br/>
    • ~/.tmux.conf → Points to dotfiles/tmux/.tmux.conf
 5. Using option `--adopt` in case that you don't want to remove real config file in your machine
 
@@ -134,5 +134,5 @@ stow nvim tmux zsh
 
 ## Notes
 
-    •	Ensure existing configurations are backed up to avoid conflicts.
-    •	For large setups, use .stowrc to specify default behaviors for stow.
+    • Ensure existing configurations are backed up to avoid conflicts.
+    • For large setups, use .stowrc to specify default behaviors for stow.
