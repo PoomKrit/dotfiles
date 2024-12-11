@@ -10,7 +10,7 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
--- keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" }) | avoiding delay on using 'n' for next search
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
@@ -83,7 +83,7 @@ keymap.set("n", "y", '"+y', { desc = "Yank to clipboard" })
 keymap.set("v", "y", '"+y', { desc = "Yank to clipboard in visual mode" })
 keymap.set("n", "<leader>p", ":YankFilePath<CR>", { desc = "Copy file path" })
 keymap.set("n", "<leader>P", ":YankDir<CR>", { desc = "Copy directory path" })
-keymap.set("n", "nh", ":noh<CR>", { desc = "Clear highlighted search" })
+-- keymap.set("n", "nh", ":noh<CR>", { desc = "Clear highlighted search" }) | avoiding delay on using 'n' for next search
 
 -- keymap file-explorer
 keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
