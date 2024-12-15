@@ -14,7 +14,7 @@ return {
 			"rcarriga/nvim-notify",
 			opts = {
 				render = "wrapped-default", -- Choose between "default", "minimal", "simple", or "compact"
-				timeout = 3000, -- Adjust timeout duration (3000ms = 3 seconds)
+				timeout = 5000, -- Adjust timeout duration (5000ms = 5 seconds)
 			},
 		},
 	},
