@@ -29,7 +29,7 @@ keymap.set("n", "<leader>s=", "<C-w>=", { desc = "Set equally pane" })
 local keymap = vim.keymap -- for conciseness
 
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
-keymap.set("n", "T", "gg", { desc = "Save file" })
+keymap.set("n", "T", "gg", { desc = "Go to top page" })
 keymap.set("n", "<M-`>", "<C-w>w", { desc = "Move to other pane" })
 keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move to left pane" })
 keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move to right pane" })
