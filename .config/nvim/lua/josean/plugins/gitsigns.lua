@@ -9,7 +9,13 @@ return {
 			topdelete = { text = "‾" },
 			changedelete = { text = "~" },
 		},
-		current_line_blame = false,
+		current_line_blame = true,
+		current_line_blame_opts = {
+			delay = 100, -- Delay in milliseconds (e.g., 200ms)
+			virt_text = true, -- Show blame as virtual text
+			virt_text_pos = "eol", -- Position: 'eol', 'overlay', or 'right_align'
+			ignore_whitespace = false, -- Optional: ignore whitespace changes
+		},
 		on_attach = function(bufnr)
 			local gs = package.loaded.gitsigns
 

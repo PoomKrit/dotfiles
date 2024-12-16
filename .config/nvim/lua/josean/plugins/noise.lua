@@ -13,7 +13,7 @@ return {
 		{
 			"rcarriga/nvim-notify",
 			opts = {
-				render = "default", -- Choose between "default", "minimal", "simple", or "compact"
+				render = "wrapped-compact", -- Choose between "default", "minimal", "simple", or "compact"
 				timeout = 5000, -- Adjust timeout duration (5000ms = 5 seconds)
 				sticky = true, -- Keeps notifications visible until dismissed
 			},
