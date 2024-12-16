@@ -1,3 +1,8 @@
-keybinding:
-  universal:
-    unstage-all: "shift+u"
+# keybinding:
+#   universal:
+#     unstage-all: "shift+u"
+services:
+  "gitlab.softfactory": "gitlab:gitlab.softfactory-accor.net"
+  "gitlab.sfpci": "gitlab:gitlab.sfpci.aws.accor.net"
+os:
+  openLink: open "$(echo "{{link}}" | sed 's/%2F/\//g')"
