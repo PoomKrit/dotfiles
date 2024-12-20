@@ -48,6 +48,7 @@ return {
 						},
 					},
 				},
+				root_folder_modifier = ":t", -- Display only the folder name (tail)
 			},
 			-- disable window_picker for
 			-- explorer to work well with
