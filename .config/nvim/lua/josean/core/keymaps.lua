@@ -26,7 +26,6 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>s=", "<C-w>=", { desc = "Set equally pane" })
 
 -- switch buffer pane
-local keymap = vim.keymap -- for conciseness
 
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "T", "gg", { desc = "Go to top page in normal mode" })
