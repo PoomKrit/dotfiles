@@ -17,6 +17,12 @@ return {
 				timeout = 5000, -- Adjust timeout duration (5000ms = 5 seconds)
 				sticky = true, -- Keeps notifications visible until dismissed
 			},
+			config = function()
+				-- Set up a keymap to manually dismiss notifications
+				vim.keymap.set("n", "<leader>cn", function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end, { desc = "Close Notifications" })
+			end,
 		},
 	},
 }
