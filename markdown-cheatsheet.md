@@ -76,7 +76,17 @@ Code Blocks
 
 Markdown Symbol Description
 
+```python
+def hello():
+    print("Hello, world!")
+```
+
+- [ ] Task 1
+- [x] Task 2
+- [-] Task 2
+
 ````language Code block with syntax highlighting
+
 
 Example:
 
@@ -112,6 +122,7 @@ Tasks Lists
 Markdown Symbol	Description
 - [ ]	Unchecked checkbox
 - [x]	Checked checkbox
+- [-]	Deny Checked checkbox
 
 Example:
 
