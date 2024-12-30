@@ -166,7 +166,8 @@ alias j='jobs'
 
 # AWS
 alias a='aws'
-alias ap='eval $(/Users/poomkrit/Library/CloudStorage/SynologyDrive-scripts/aws-profile-selection.sh)'
+# alias ap='eval $(/Users/poomkrit/Library/CloudStorage/SynologyDrive-scripts/aws-profile-selection.sh)'
+alias ap='eval $(/Users/poomkrit/dotfiles/aws-profile-selection/aws-profile-selection.sh)'
 
 # Git
 alias gt='git tag'
@@ -322,7 +323,7 @@ _fzf_comprun() {
 }
 
 # To customize prompt, run `p10k configure` or edit ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh.
-[[ ! -f ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh ]] || source ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh
+# [[ ! -f ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh ]] || source ~/Library/CloudStorage/SynologyDrive-scripts/.p10k.zsh
 
 # Make the prompt stay almost on top
 # source /Users/poomkrit/github/almostontop/almostontop.plugin.zsh
