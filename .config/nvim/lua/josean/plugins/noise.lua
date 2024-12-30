@@ -2,49 +2,60 @@ return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
 	opts = {
-		-- add any options here
+		-- Add any Noice options here
 	},
 	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		-- Required dependency
 		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
+
+		-- Optional dependency: `nvim-notify` for notifications
 		{
 			"rcarriga/nvim-notify",
-			-- opts = {
-			-- 	render = "wrapped-compact", -- Choose between "default", "minimal", "simple", or "compact"
-			-- 	timeout = 5000, -- Adjust timeout duration (5000ms = 5 seconds)
-			-- 	sticky = true, -- Keeps notifications visible until dismissed
-			-- },
 			config = function()
 				local notify = require("notify")
 				notify.setup({
-					render = "wrapped-compact", -- Ensure render is applied here as well
-					timeout = 5000,
-					sticky = true,
-					level = "info", -- Log level: "trace", "debug", "info", "warn", "error"
-					max_width = 80, -- Maximum width of the notification window (nil means unlimited)
-					max_height = 10, -- Maximum height of the notification window (nil means unlimited)
-					stages = "fade", -- Notification stages: "fade", "slide", "fade_in_slide_out", etc.
-					background_colour = "#000000", -- Background color of notifications
-					icons = {
+					-- Render style for notifications
+					render = "simple", -- Options: "default", "minimal", "simple", "compact" and wrapped-compact
+
+					-- Notification behavior
+					timeout = 5000, -- Duration in milliseconds (e.g., 5000ms = 5 seconds)
+					sticky = true, -- Notifications stay visible until dismissed
+
+					-- Notification level
+					level = "info", -- Options: "trace", "debug", "info", "warn", "error"
+
+					-- Notification window dimensions
+					max_width = 80, -- Maximum width of notification window
+					max_height = 10, -- Maximum height of notification window
+
+					-- Notification animations
+					stages = "fade", -- Options: "fade", "slide", "fade_in_slide_out", etc.
+
+					-- Visual settings
+					background_colour = "#000000", -- Background color for notifications
+					icons = { -- Icons for different levels
 						ERROR = "",
 						WARN = "",
 						INFO = "",
 						DEBUG = "",
 						TRACE = "✎",
-					}, -- Icons for different notification levels
+					},
+
+					-- Additional options
 					time_formats = {
-						"%H:%M:%S", -- Default time format for notifications
-					}, -- Required time format
-					on_open = function() end, -- Optional callback for notification opening
-					on_close = function() end, -- Optional callback for notification closing
-					minimum_width = 20, -- Set minimum width to avoid layout issues
-					fps = 30, -- Frames per second for animations
-					top_down = true, -- Display notifications from top to bottom
+						"%H:%M:%S", -- Display time format
+					},
+					on_open = function() end, -- Callback for notification opening
+					on_close = function() end, -- Callback for notification closing
+					minimum_width = 20, -- Prevent layout issues with narrow windows
+					fps = 30, -- Animation frames per second
+					top_down = true, -- Notifications flow from top to bottom
+
+					-- **Critical: Add this field**
+					merge_duplicates = true, -- Avoid duplicate notifications
 				})
-				-- Set up a keymap to manually dismiss notifications
+
+				-- Keybinding to dismiss notifications
 				vim.keymap.set("n", "<leader>cn", function()
 					require("notify").dismiss({ silent = true, pending = true })
 				end, { desc = "Close Notifications" })
