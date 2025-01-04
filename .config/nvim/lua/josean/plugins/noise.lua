@@ -56,7 +56,7 @@ return {
 				})
 
 				-- Keybinding to dismiss notifications
-				vim.keymap.set("n", "<leader>cn", function()
+				vim.keymap.set("n", "<leader>nc", function()
 					require("notify").dismiss({ silent = true, pending = true })
 				end, { desc = "Close Notifications" })
 			end,
