@@ -3,8 +3,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps -------------------
+----------------------- General Keymaps -------------------
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -16,17 +15,17 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+-- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+-- keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sn", ":vnew<CR>", { desc = "Open Blank Splitted window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>s=", "<C-w>=", { desc = "Set equally pane" })
+keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>V", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>=", "<C-w>=", { desc = "Set equally pane" })
+keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new window vertically" })
+keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new window horizontally" })
 
 -- switch buffer pane
-
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "T", "gg", { desc = "Go to top page in normal mode" })
 keymap.set("x", "T", "gg", { desc = "Go to top page in visual mode" })
@@ -41,10 +40,8 @@ keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
 -- keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
 keymap.set("n", "<M-1>", ":e!<CR>", { desc = "Reset file" })
-keymap.set("n", "<M-=>", "<C-w>=", { desc = "Adjust panes equally" })
-keymap.set("n", "<M-q>", ":q<CR>", { desc = "Quit current window" })
-keymap.set("n", "<M-Q>", ":qa<CR>", { desc = "Quit all windows" })
-keymap.set("n", "T", "gg", { desc = "Go to beginning of the file" })
+keymap.set("n", "<C-d>", ":q<CR>", { desc = "Quit current window" })
+keymap.set("n", "<C-D>", ":qa<CR>", { desc = "Quit all windows" })
 keymap.set("n", "<M-.>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-,>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
@@ -83,7 +80,6 @@ keymap.set("n", "y", '"+y', { desc = "Yank to clipboard" })
 keymap.set("v", "y", '"+y', { desc = "Yank to clipboard in visual mode" })
 keymap.set("n", "<leader>p", ":YankFilePath<CR>", { desc = "Copy file path" })
 keymap.set("n", "<leader>P", ":YankDir<CR>", { desc = "Copy directory path" })
--- keymap.set("n", "nh", ":noh<CR>", { desc = "Clear highlighted search" }) | avoiding delay on using 'n' for next search
 
 -- keymap file-explorer
 keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
