@@ -118,3 +118,11 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find
 -- keymaps for auto-sessions
 keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for current work directory" }) -- restore last workspace session for current directory
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+
+-- keymaps for markdownpreview
+keymap.set(
+	"n",
+	"<leader>md",
+	"<cmd>MarkdownPreview<CR>",
+	{ desc = "Open Markdown Preview", noremap = true, silent = true }
+) -- Toggle markdownpreview
