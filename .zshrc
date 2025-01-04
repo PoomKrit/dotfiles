@@ -174,7 +174,15 @@ alias ls="eza --color=always --long --git --icons=always --no-filesize --no-time
 alias lsnc="eza --color=always --long --git --icons=never --no-filesize --no-time --no-user --no-permissions"
 alias l="eza --all --color=always --long --git --icons=always"
 
-# 10. History configuration
+# Prompting AWS Profile
+alias awswho="echo Current AWS Profile: \${AWS_PROFILE:-default}"
+
+aws() {
+    echo "Using AWS Profile: ${AWS_PROFILE:-default}"
+    command aws "$@"
+}
+
+# History configuration
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
