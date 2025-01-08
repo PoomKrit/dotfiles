@@ -4,6 +4,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # 2. Environment variables and exports
+export GEMINI_API_KEY="AIzaSyC0DmMOWJGjKwHCurVX2-hbDQFQPhTD6SY"
+export DEEPSEEK_API_KEY="sk-0a14a80f346c44d6bacc8ef14aaeb6bf"
 export ZSH="$HOME/.oh-my-zsh"
 export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR="nvim"
@@ -13,7 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # 3. Homebrew and PATH
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$HOME/.poetry/bin:$PATH
+export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$HOME/.poetry/bin:$PATH:$HOME/.local/bin
 
 # 4. NVM initialization
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
@@ -139,6 +141,7 @@ alias ks='kustomize'
 alias kx='kubectx'
 alias kns='echo 'NAMESPACE'\\n;kubectl config view --minify -o jsonpath={..namespace};echo'
 alias kcns='kubectl config set-context --current --namespace'
+alias kctx='kubectl config current-context'
 alias e='eksctl'
 alias h='helm'
 
@@ -175,14 +178,14 @@ alias lsnc="eza --color=always --long --git --icons=never --no-filesize --no-tim
 alias l="eza --all --color=always --long --git --icons=always"
 
 # Prompting AWS Profile
-alias awswho="echo Current AWS Profile: \${AWS_PROFILE:-default}"
+alias awho="echo Current AWS Profile: \${AWS_PROFILE:-default}"
+#
+# aws() {
+#     echo "Using AWS Profile: ${AWS_PROFILE:-default}"
+#     command aws "$@"
+# }
 
-aws() {
-    echo "Using AWS Profile: ${AWS_PROFILE:-default}"
-    command aws "$@"
-}
-
-# History configuration
+# 10. History configuration
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -212,3 +215,16 @@ bindkey "^C" save_and_interrupt
 
 # 12. P10k configuration (must be last)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Created by `pipx` on 2025-01-05 08:03:35
+export PATH="$PATH:/Users/poomkrit/.local/bin"
+
+# --- Yazi setup --- #
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
