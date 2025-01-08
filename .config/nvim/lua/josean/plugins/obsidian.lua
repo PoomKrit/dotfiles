@@ -1,3 +1,31 @@
+-- NOTE: Initial version: without template
+-- return {
+-- 	"epwalsh/obsidian.nvim",
+-- 	version = "*",
+-- 	lazy = true,
+-- 	ft = "markdown",
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 	},
+-- 	opts = {
+-- 		workspaces = {
+-- 			{
+-- 				name = "ObsidianMobile",
+-- 				path = "/Users/poomkrit/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianMobile",
+-- 			},
+-- 		},
+-- 		templates = {
+-- 			subdir = "templates", -- Specify the templates folder
+-- 			date_format = "%Y-%m-%d", -- Date format for template usage
+-- 			time_format = "%H:%M:%S", -- Time format for template usage
+-- 		},
+-- 		new_notes_location = "root", -- Where new notes are created
+-- 	},
+-- }
+
+---------------------------------------------------
+
+-- HACK: Stable version: creating default tag
 return {
 	"epwalsh/obsidian.nvim",
 	version = "*",
@@ -9,70 +37,60 @@ return {
 	opts = {
 		workspaces = {
 			{
-				name = "Obsidian NAS",
-				path = "/Users/poomkrit/Library/CloudStorage/SynologyDrive-notes/Obsidian NAS/",
+				name = "ObsidianMobile",
+				path = "/Users/poomkrit/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianMobile",
 			},
 		},
+		templates = {
+			subdir = "templates", -- Specify the templates folder
+			date_format = "%Y-%m-%d", -- Date format for template usage
+			time_format = "%H:%M:%S", -- Time format for template usage
+		},
+		new_notes_location = "root", -- Where new notes are created
+		note_frontmatter_func = function(note)
+			-- Dynamically generate frontmatter for new notes
+			return {
+				id = note.id or note.title, -- Use note ID or title
+				aliases = { note.title }, -- Set title as default alias
+				tags = {}, -- Default tags (can be customized)
+				date = os.date("%Y-%m-%d"), -- Insert current date
+			}
+		end,
 	},
 }
 
--- require("obsidian").setup({
--- 	workspaces = {
--- 		{
--- 			name = "ZazenCodes",
--- 			path = "/Users/alex/library/Mobile Documents/iCloud~md~obsidian/Documents/ZazenCodes",
+---------------------------------------------------
+
+-- TEST: Testing version
+-- return {
+-- 	"epwalsh/obsidian.nvim",
+-- 	version = "*",
+-- 	lazy = true,
+-- 	ft = "markdown",
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 	},
+-- 	opts = {
+-- 		workspaces = {
+-- 			{
+-- 				name = "ObsidianMobile",
+-- 				path = "/Users/poomkrit/Library/Mobile Documents/iCloud~md~obsidian/Documents/ObsidianMobile",
+-- 			},
 -- 		},
--- 	},
--- 	notes_subdir = "inbox",
--- 	new_notes_location = "notes_subdir",
---
--- 	disable_frontmatter = true,
--- 	templates = {
--- 		subdir = "templates",
--- 		date_format = "%Y-%m-%d",
--- 		time_format = "%H:%M:%S",
--- 	},
---
--- 	-- name new notes starting the ISO datetime and ending with note name
--- 	-- put them in the inbox subdir
--- 	-- note_id_func = function(title)
--- 	--   local suffix = ""
--- 	--   -- get current ISO datetime with -5 hour offset from UTC for EST
--- 	--   local current_datetime = os.date("!%Y-%m-%d-%H%M%S", os.time() - 5*3600)
--- 	--   if title ~= nil then
--- 	--     suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
--- 	--   else
--- 	--     for _ = 1, 4 do
--- 	--       suffix = suffix .. string.char(math.random(65, 90))
--- 	--     end
--- 	--   end
--- 	--   return current_datetime .. "_" .. suffix
--- 	-- end,
---
--- 	-- key mappings, below are the defaults
--- 	mappings = {
--- 		-- overrides the 'gf' mapping to work on markdown/wiki links within your vault
--- 		["gf"] = {
--- 			action = function()
--- 				return require("obsidian").util.gf_passthrough()
--- 			end,
--- 			opts = { noremap = false, expr = true, buffer = true },
+-- 		templates = {
+-- 			subdir = "templates", -- Specify the templates folder
+-- 			date_format = "%Y-%m-%d", -- Date format for template usage
+-- 			time_format = "%H:%M:%S", -- Time format for template usage
 -- 		},
--- 		-- toggle check-boxes
--- 		["<leader>ti"] = {
--- 			action = function()
--- 				return require("obsidian").util.toggle_checkbox()
--- 			end,
--- 			opts = { buffer = true },
--- 		},
+-- 		new_notes_location = "root", -- Where new notes are created
+-- 		note_frontmatter_func = function(note)
+-- 			-- Dynamically generate frontmatter for new notes
+-- 			return {
+-- 				id = note.id or note.title, -- Use note ID or title
+-- 				aliases = { note.title }, -- Set title as default alias
+-- 				tags = { note.path }, -- Default tags (can be customized)
+-- 				date = os.date("%Y-%m-%d"), -- Insert current date
+-- 			}
+-- 		end,
 -- 	},
--- 	completion = {
--- 		nvim_cmp = true,
--- 		min_chars = 2,
--- 	},
--- 	ui = {
--- 		-- Disable some things below here because I set these manually for all Markdown files using treesitter
--- 		checkboxes = {},
--- 		bullets = {},
--- 	},
--- })
+-- }
