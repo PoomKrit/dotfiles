@@ -30,18 +30,18 @@ keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "T", "gg", { desc = "Go to top page in normal mode" })
 keymap.set("x", "T", "gg", { desc = "Go to top page in visual mode" })
 keymap.set("n", "<M-`>", "<C-w>w", { desc = "Move to other pane" })
-keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move to left pane" })
-keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move to right pane" })
-keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move to up pane" })
-keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move to down pane" })
 keymap.set("n", "<M-t>", ":tabnew<CR>", { desc = "Create new tab" })
 keymap.set("n", "<M-]>", ":tabnext<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
--- keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
-keymap.set("n", "<M-1>", ":e!<CR>", { desc = "Reset file" })
+-- keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move to left pane" })
+-- keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move to right pane" })
+-- keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move to up pane" })
+-- keymap.set("n", "<M-j>", "<C-w>j", { desc = "Move to down pane" })
 keymap.set("n", "<C-d>", ":q<CR>", { desc = "Quit current window" })
-keymap.set("n", "<C-D>", ":qa<CR>", { desc = "Quit all windows" })
+keymap.set("n", "<M-Q>", ":qa<CR>", { desc = "Quit all windows" })
+keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
+keymap.set("n", "<M-1>", ":e!<CR>", { desc = "Reset file" })
 keymap.set("n", "<M-.>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-,>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
@@ -92,7 +92,7 @@ keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file
 -- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
 keymap.set("n", "<leader>ff", function()
 	require("telescope.builtin").find_files({
-		find_command = { "fd", "--type", "f", "--follow" },
+		find_command = { "fd", "--type", "f", "--follow", "--hidden", "." },
 	})
 end, { desc = "Fuzzy find files (include symlinks)" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
@@ -121,4 +121,23 @@ keymap.set(
 	"<leader>md",
 	"<cmd>MarkdownPreview<CR>",
 	{ desc = "Open Markdown Preview", noremap = true, silent = true }
-) -- Toggle markdownpreview
+)
+
+-- Keymap for black hole register deletes
+-- Delete without saving to clipboard
+keymap.set("v", "<leader>d", [["_d]], { noremap = true, silent = true, desc = "Delete without saving to clipboard" })
+keymap.set(
+	"v",
+	"<leader>x",
+	[["_x]],
+	{ noremap = true, silent = true, desc = "Delete char without saving to clipboard" }
+)
+keymap.set(
+	"v",
+	"<leader>D",
+	[["_D]],
+	{ noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" }
+)
+
+-- Optional: black hole register for change command
+keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
