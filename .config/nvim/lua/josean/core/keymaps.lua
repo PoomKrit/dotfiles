@@ -76,8 +76,7 @@ vim.api.nvim_create_user_command("YankDir", function()
 	print("Copied directory: " .. dir_path)
 end, { desc = "Copy the directory path to the clipboard" })
 keymap.set("n", "<leader>a", ":Buffers<CR>", { desc = "Show all buffers" })
-keymap.set("n", "y", '"+y', { desc = "Yank to clipboard" })
-keymap.set("v", "y", '"+y', { desc = "Yank to clipboard in visual mode" })
+keymap.set({ "n", "v" }, "y", '"+y', { desc = "Yank to clipboard for both normal and visual mode" })
 keymap.set("n", "<leader>p", ":YankFilePath<CR>", { desc = "Copy file path" })
 keymap.set("n", "<leader>P", ":YankDir<CR>", { desc = "Copy directory path" })
 
@@ -96,18 +95,8 @@ keymap.set("n", "<leader>ff", function()
 	})
 end, { desc = "Fuzzy find files (include symlinks)" })
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-keymap.set(
-	"n",
-	"<leader>fw",
-	"<cmd>Telescope live_grep<cr>",
-	{ desc = "Find string or word in current work directory" }
-)
-keymap.set(
-	"n",
-	"<leader>fc",
-	"<cmd>Telescope grep_string<cr>",
-	{ desc = "Find string under cursor in current work directory" }
-)
+keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string or word in current work directory" })
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in current work directory" })
 keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers in cwd" })
 
@@ -116,28 +105,13 @@ keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore sessi
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 
 -- keymaps for markdownpreview
-keymap.set(
-	"n",
-	"<leader>md",
-	"<cmd>MarkdownPreview<CR>",
-	{ desc = "Open Markdown Preview", noremap = true, silent = true }
-)
+keymap.set("n", "<leader>md", "<cmd>MarkdownPreview<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
 
 -- Keymap for black hole register deletes
 -- Delete without saving to clipboard
 keymap.set("v", "<leader>d", [["_d]], { noremap = true, silent = true, desc = "Delete without saving to clipboard" })
-keymap.set(
-	"v",
-	"<leader>x",
-	[["_x]],
-	{ noremap = true, silent = true, desc = "Delete char without saving to clipboard" }
-)
-keymap.set(
-	"v",
-	"<leader>D",
-	[["_D]],
-	{ noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" }
-)
+keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" })
+keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" })
 
 -- Optional: black hole register for change command
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
