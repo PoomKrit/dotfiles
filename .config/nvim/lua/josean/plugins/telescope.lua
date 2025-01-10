@@ -1,3 +1,5 @@
+-- For file search
+
 -- NOTE: this is a good version from josean
 return {
 	"nvim-telescope/telescope.nvim",
@@ -11,7 +13,6 @@ return {
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
-
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
@@ -23,8 +24,14 @@ return {
 					},
 				},
 			},
+			pickers = {
+				live_grep = {
+					additional_args = function()
+						return { "--hidden", "--glob", "!**/.git/*" }
+					end,
+				},
+			},
 		})
-
 		telescope.load_extension("fzf")
 	end,
 }
