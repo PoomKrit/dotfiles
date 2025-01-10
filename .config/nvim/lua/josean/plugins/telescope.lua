@@ -30,6 +30,12 @@ return {
 						return { "--hidden", "--glob", "!**/.git/*" }
 					end,
 				},
+        find_files = {
+           hidden = true,
+           no_ignore = true,
+           -- You might want to exclude some directories:
+           -- find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--exclude", ".git" },
+        },
 			},
 		})
 		telescope.load_extension("fzf")
