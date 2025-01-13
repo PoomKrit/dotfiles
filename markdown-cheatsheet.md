@@ -24,12 +24,10 @@ Example:
 
 ### Heading 3
 
-Text Formatting
+## Text Formatting
 
-Markdown Symbol Description Example
+### Markdown Symbol Description Example
 _text_ Italics Italics
-_text_ Italics Italics
-**text** Bold Bold
 **text** Bold Bold
 ~~text~~ Strikethrough Strikethrough
 ==text== Highlight (not standard, but used in some Markdown flavors) ==Highlight==
@@ -86,14 +84,15 @@ def hello():
 - [-] Task 2
 
 ````language Code block with syntax highlighting
-
-
 Example:
+  this is a block
+````
 
 ```python
 def hello():
     print("Hello, world!")
 
+```
 ---
 
 ### **Horizontal Rules**
@@ -108,7 +107,8 @@ Example:
 Tables
 
 Markdown Symbol	Description
-`	`
+```
+
 ---	Align columns (optional)
 
 Example:
