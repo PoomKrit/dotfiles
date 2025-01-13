@@ -4,8 +4,13 @@ return {
   version = "*",
   opts = {
     options = {
-      mode = "tabs",
-      separator_style = "slant",
+      mode = "tabs", -- Try "buffers" or "tabs"
+      separator_style = "slant", -- Try different styles
+      -- Other useful options:
+      always_show_bufferline = true,
+      show_buffer_close_icons = true,
+      show_close_icon = true,
+      color_icons = true,
     },
   },
 }
