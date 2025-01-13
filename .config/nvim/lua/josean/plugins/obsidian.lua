@@ -47,6 +47,9 @@ return {
 			time_format = "%H:%M", -- Time format for template usage
       default_template = "nvim-template.md" -- Specify the template to use for new notes
 		},
+    attachments = {
+      img_folder = "images",
+    },
 		new_notes_location = "current_dir", -- Where new notes are created
 		note_frontmatter_func = function(note)
 			-- Extract the folder name from the note's path
