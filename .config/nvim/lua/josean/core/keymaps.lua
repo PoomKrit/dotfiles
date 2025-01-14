@@ -82,10 +82,10 @@ keymap.set("n", "<leader>P", ":YankDir<CR>", { desc = "Copy directory path" })
 
 -- keymap file-explorer
 keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
--- keymap.set("n", "<leader>ec", "<cmd>NvimTreeClose<CR>", { desc = "Close explorer" }) -- toggle file explorer
-keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-keymap.set("n", "<leader>eF", "<cmd>NvimTreeFindFile<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Move cursor to NvimTree" }) -- toggle file explorer on current file
+keymap.set("n", "<leader>eF", "<cmd>NvimTreeFindFile<CR>", { desc = "Move cursor to current file location" }) -- toggle file explorer on current file
 keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+-- keymap.set("n", "<leader>ec", "<cmd>NvimTreeClose<CR>", { desc = "Close explorer" }) -- toggle file explorer
 
 -- keymaps for telescope fzf
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
