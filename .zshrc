@@ -124,6 +124,7 @@ source ~/github/fzf-git.sh/fzf-git.sh
 # 9. Aliases
 # Tool aliases
 alias tm="tmux"
+alias tks="tmux kill-server"
 alias t="tree"
 alias n="nix"
 alias tg="terragrunt"
@@ -221,7 +222,7 @@ bindkey "^C" save_and_interrupt
 export PATH="$PATH:/Users/poomkrit/.local/bin"
 
 # --- Yazi setup --- #
-function y() {
+function yz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
