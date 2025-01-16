@@ -48,7 +48,11 @@ return {
 						},
 					},
 				},
-				root_folder_modifier = ":t", -- Display only the folder name (tail)
+				-- root_folder_modifier = ":t", -- Display last folder
+        -- root_folder_modifier = ":s?^/\\([^/]*\\)/.*\\(/[^/]*\\)$?\\1 - \\2?", -- showing top and last name of full path
+        -- root_folder_modifier = ":s?.*/\\([^/]*/[^/]*/[^/]*\\)$?\\1?" -- showing only top 3 down folders
+        root_folder_modifier = ":s?^/Users/poomkrit?~?:s?\\(.*\\)/\\([^/]*\\)$?(\\2) \\1?" -- showing current folder with path above on the right
+
 			},
 			-- disable window_picker for
 			-- explorer to work well with
