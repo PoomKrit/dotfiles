@@ -6,7 +6,7 @@ local keymap = vim.keymap -- for conciseness
 ----------------------- General Keymaps -------------------
 
 -- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+-- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -92,7 +92,7 @@ keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy f
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string or word in current work directory" })
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in current work directory" })
-keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+keymap.set("n", "<leader>fT", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers in cwd" })
 
 -- keymaps for auto-sessions
@@ -112,5 +112,6 @@ keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "D
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
 
 -- keymaps for Floaterm
-keymap.set("n", "<leader>ft", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm in Neovim", noremap = true, silent = true })
-keymap.set("n", "<leader>fT", "<cmd>FloatermNew<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>ftt", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>ftn", "<cmd>FloatermNew<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>fth", "<cmd>FloatermHide<CR>", { desc = "Hide Floaterm in Neovim", noremap = true, silent = true })
