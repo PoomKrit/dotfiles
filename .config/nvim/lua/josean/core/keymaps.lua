@@ -111,7 +111,9 @@ keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "D
 -- Optional: black hole register for change command
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
 
--- keymaps for Floaterm
-keymap.set("n", "<leader>ftt", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
-keymap.set("n", "<leader>ftn", "<cmd>FloatermNew<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
-keymap.set("n", "<leader>fth", "<cmd>FloatermHide<CR>", { desc = "Hide Floaterm in Neovim", noremap = true, silent = true })
+-- keymaps for Floaterm & terminal
+keymap.set("n", "<leader>tm", "<cmd>new | terminal<CR>", { desc = "Toggle Terminal in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>tn", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm", noremap = true, silent = true })
+keymap.set("n", "<leader>th", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm", noremap = true, silent = true })
+keymap.set("n", "<leader>tN", "<cmd>FloatermNext<CR>", { desc = "Go next terminal in Floaterm", noremap = true, silent = true })
+keymap.set("n", "<leader>tP", "<cmd>FloatermPrev<CR>", { desc = "Go previous terminal in Floaterm", noremap = true, silent = true })
