@@ -41,7 +41,7 @@ keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
 keymap.set("n", "<C-d>", ":q<CR>", { desc = "Quit current window" })
 keymap.set("n", "<M-Q>", ":qa<CR>", { desc = "Quit all windows" })
 keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
-keymap.set("n", "<M-1>", ":e!<CR>", { desc = "Reset file" })
+keymap.set("n", "<M-e>", ":e!<CR>", { desc = "Reset file" })
 keymap.set("n", "<M-.>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-,>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
@@ -110,3 +110,7 @@ keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "D
 
 -- Optional: black hole register for change command
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
+
+-- keymaps for Floaterm
+keymap.set("n", "<leader>ft", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>fT", "<cmd>FloatermNew<CR>", { desc = "Toggle Floaterm in Neovim", noremap = true, silent = true })
