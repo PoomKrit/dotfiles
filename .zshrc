@@ -52,16 +52,10 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Zinit plugins with performance optimization
-zinit ice silent blockf depth=1 wait"0"
+zinit ice silent blockf depth=1
 zinit light zdharma-continuum/zinit-annex-as-monitor
-
-zinit ice silent blockf depth=1 wait"0"
 zinit light zdharma-continuum/zinit-annex-bin-gem-node
-
-zinit ice silent blockf depth=1 wait"0"
 zinit light zdharma-continuum/zinit-annex-patch-dl
-
-zinit ice silent blockf depth=1 wait"0"
 zinit light zdharma-continuum/zinit-annex-rust
 
 # Additional Zinit plugins
@@ -135,7 +129,6 @@ alias ..="cd .."
 alias vi="nvim"
 alias v="nvim"
 alias nvimdiff="nvim -d"
-alias y="yarn"
 alias lg="lazygit"
 
 # Kubernetes aliases
@@ -156,6 +149,7 @@ alias j='jobs'
 # AWS and related tools
 alias a='aws'
 alias ap='eval $(/Users/poomkrit/dotfiles/aws-profile-selection/aws-profile-selection.sh)'
+alias ghg='$HOME/dotfiles/ghorg_config.sh'
 alias ali='. $HOME/git/aws-tools/aws-login.sh'
 alias vlt='vault'
 alias sam='saml2aws'
@@ -193,16 +187,16 @@ HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 
-setopt sharehistory
-setopt inc_append_history
-setopt appendhistory
-setopt hist_ignore_space
+# setopt sharehistory
+# setopt inc_append_history
+# setopt appendhistory
+# setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt rmstarsilent
-setopt HIST_NO_STORE
+# setopt hist_ignore_dups
+# setopt hist_find_no_dups
+# setopt rmstarsilent
+# setopt HIST_NO_STORE
 
 # Save cancelled commands
 save_and_interrupt() {
@@ -222,7 +216,7 @@ bindkey "^C" save_and_interrupt
 export PATH="$PATH:/Users/poomkrit/.local/bin"
 
 # --- Yazi setup --- #
-function yz() {
+function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
