@@ -106,7 +106,6 @@ keymap.set("n", "<leader>md", "<cmd>MarkdownPreview<CR>", { desc = "Open Markdow
 -- Delete without saving to clipboard
 keymap.set("v", "<leader>d", [["_d]], { noremap = true, silent = true, desc = "Delete without saving to clipboard" })
 keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" })
-keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "Delete to end of line without saving to clipboard" })
 
 -- Optional: black hole register for change command
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
