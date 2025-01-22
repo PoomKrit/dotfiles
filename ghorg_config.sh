@@ -16,7 +16,7 @@ select_base_url() {
         2)
             BASE_URL="gitlab.softfactory-accor.net"
             EXPORT_PATH="$HOME/git/$BASE_URL"
-            GHORG_TOKEN="$(op item get "Gitlab Soft-Factory" --format json | jq -r '.fields[] | select(.label == "token") | .value')"
+            GHORG_TOKEN="$(op item get "Gitlab Soft-Factory" --format json | jq -r '.fields[] | select(.label == "token admin") | .value')"
             ;;
         *)
             echo "Invalid choice. Please run the script again and select 1 or 2."
