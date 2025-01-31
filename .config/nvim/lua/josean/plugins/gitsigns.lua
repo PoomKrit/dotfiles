@@ -9,7 +9,7 @@ return {
 			topdelete = { text = "‾" },
 			changedelete = { text = "~" },
 		},
-		current_line_blame = true,
+		current_line_blame = false,
 		current_line_blame_opts = {
 			delay = 100, -- Delay in milliseconds (e.g., 200ms)
 			virt_text = true, -- Show blame as virtual text
