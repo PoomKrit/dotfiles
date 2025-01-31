@@ -143,13 +143,14 @@ alias h='helm'
 # Development tools
 alias python='python3'
 alias dk='docker'
+alias olm='ollama'
 alias pdm='podman'
 alias j='jobs'
 
 # AWS and related tools
 alias a='aws'
 alias ap='eval $(/Users/poomkrit/dotfiles/aws-profile-selection/aws-profile-selection.sh)'
-alias ghg='$HOME/dotfiles/ghorg_config.sh'
+alias ghg='~/dotfiles/ghorg_config.sh'
 alias ali='. $HOME/git/aws-tools/aws-login.sh'
 alias vlt='vault'
 alias sam='saml2aws'
