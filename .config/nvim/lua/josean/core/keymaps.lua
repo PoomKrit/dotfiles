@@ -41,7 +41,7 @@ keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
 keymap.set("n", "<C-d>", ":q<CR>", { desc = "Quit current window" })
 keymap.set("n", "<M-Q>", ":qa<CR>", { desc = "Quit all windows" })
 keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
-keymap.set("n", "<M-e>", ":e!<CR>", { desc = "Reset file" })
+keymap.set("n", "<C-e>", ":e!<CR>", { desc = "Reset file" })
 keymap.set("n", "<M-.>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-,>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
@@ -111,7 +111,8 @@ keymap.set("v", "<leader>D", [["_D]], { noremap = true, silent = true, desc = "D
 keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "Change without saving to clipboard" })
 
 -- keymaps for Floaterm & terminal
-keymap.set("n", "<leader>tm", "<cmd>new | terminal<CR>", { desc = "Toggle Terminal in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>tm", "<cmd>new | terminal<CR>", { desc = "Vertically toggle Terminal in Neovim", noremap = true, silent = true })
+keymap.set("n", "<leader>tM", "<cmd>vnew | terminal<CR>", { desc = "Horizontally toggle Terminal in Neovim", noremap = true, silent = true })
 keymap.set("n", "<leader>tn", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm", noremap = true, silent = true })
 keymap.set("n", "<leader>th", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm", noremap = true, silent = true })
 keymap.set("n", "<leader>tN", "<cmd>FloatermNext<CR>", { desc = "Go next terminal in Floaterm", noremap = true, silent = true })
