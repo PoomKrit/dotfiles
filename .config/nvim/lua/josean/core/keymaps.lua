@@ -22,8 +22,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>V", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>=", "<C-w>=", { desc = "Set equally pane" })
-keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new window vertically" })
-keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new window horizontally" })
+keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new file vertically" })
+keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new file horizontally" })
 
 -- switch buffer pane
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
