@@ -1,4 +1,5 @@
--- While primarily used for autocompletion, it can integrate with language servers and linting tools.
+-- While primarily used for autocompletion,
+-- it can integrate with language servers and linting tools.
 
 return {
 	"hrsh7th/nvim-cmp",
