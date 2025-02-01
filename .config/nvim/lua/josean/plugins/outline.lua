@@ -1,4 +1,5 @@
 -- Table of content
+-- NOTE: default
 return {
 	"hedyhli/outline.nvim",
 	lazy = true,
@@ -15,3 +16,4 @@ return {
 		},
 	},
 }
+
