@@ -100,7 +100,7 @@ keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore sessi
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 
 -- keymaps for markdownpreview
-keymap.set("n", "<leader>md", "<cmd>MarkdownPreview<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
+keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
 
 -- Keymap for black hole register deletes
 -- Delete without saving to clipboard
