@@ -64,6 +64,8 @@ return {
           { "encoding" },
           { "fileformat" },
           { "filetype" },
+          { "searchcount" },
+          { "selectioncount" },
         },
       },
     })
