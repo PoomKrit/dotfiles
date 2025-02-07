@@ -24,6 +24,7 @@ keymap.set("n", "<leader>V", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>=", "<C-w>=", { desc = "Set equally pane" })
 keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new file vertically" })
 keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new file horizontally" })
+keymap.set("n", "<leader>E", ":enew<CR>", { desc = "Open new page file" })
 
 -- switch buffer pane
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
@@ -77,23 +78,23 @@ vim.api.nvim_create_user_command("YankDir", function()
 end, { desc = "Copy the directory path to the clipboard" })
 keymap.set("n", "<leader>a", ":Buffers<CR>", { desc = "Show all buffers" })
 keymap.set({ "n", "v" }, "y", '"+y', { desc = "Yank to clipboard for both normal and visual mode" })
-keymap.set("n", "<leader>p", ":YankFilePath<CR>", { desc = "Copy file path" })
-keymap.set("n", "<leader>P", ":YankDir<CR>", { desc = "Copy directory path" })
+keymap.set("n", "<leader>cp", ":YankFilePath<CR>", { desc = "Copy file path" })
+keymap.set("n", "<leader>cP", ":YankDir<CR>", { desc = "Copy directory path" })
 
 -- keymap file-explorer
-keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Move cursor to NvimTree" }) -- toggle file explorer on current file
-keymap.set("n", "<leader>eF", "<cmd>NvimTreeFindFile<CR>", { desc = "Move cursor to current file location" }) -- toggle file explorer on current file
-keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+-- keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+-- keymap.set("n", "<leader>ef", "<cmd>NvimTreeFocus<CR>", { desc = "Move cursor to NvimTree" }) -- toggle file explorer on current file
+-- keymap.set("n", "<leader>eF", "<cmd>NvimTreeFindFile<CR>", { desc = "Move cursor to current file location" }) -- toggle file explorer on current file
+-- keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 -- keymap.set("n", "<leader>ec", "<cmd>NvimTreeClose<CR>", { desc = "Close explorer" }) -- toggle file explorer
 
 -- keymaps for telescope fzf
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string or word in current work directory" })
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in current work directory" })
-keymap.set("n", "<leader>fT", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers in cwd" })
+-- keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+-- keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+-- keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string or word in current work directory" })
+-- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in current work directory" })
+keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+-- keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers in cwd" })
 
 -- keymaps for auto-sessions
 keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for current work directory" }) -- restore last workspace session for current directory
@@ -113,7 +114,7 @@ keymap.set("v", "<leader>e", [["_c]], { noremap = true, silent = true, desc = "C
 -- keymaps for Floaterm & terminal
 keymap.set("n", "<leader>tm", "<cmd>new | terminal<CR>", { desc = "Vertically toggle Terminal in Neovim", noremap = true, silent = true })
 keymap.set("n", "<leader>tM", "<cmd>vnew | terminal<CR>", { desc = "Horizontally toggle Terminal in Neovim", noremap = true, silent = true })
-keymap.set("n", "<leader>tn", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm", noremap = true, silent = true })
-keymap.set("n", "<leader>th", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm", noremap = true, silent = true })
-keymap.set("n", "<leader>tN", "<cmd>FloatermNext<CR>", { desc = "Go next terminal in Floaterm", noremap = true, silent = true })
-keymap.set("n", "<leader>tP", "<cmd>FloatermPrev<CR>", { desc = "Go previous terminal in Floaterm", noremap = true, silent = true })
+-- keymap.set("n", "<leader>tn", "<cmd>FloatermNew<CR>", { desc = "Open Floaterm", noremap = true, silent = true })
+-- keymap.set("n", "<leader>th", "<cmd>FloatermToggle<CR>", { desc = "Toggle Floaterm", noremap = true, silent = true })
+-- keymap.set("n", "<leader>tN", "<cmd>FloatermNext<CR>", { desc = "Go next terminal in Floaterm", noremap = true, silent = true })
+-- keymap.set("n", "<leader>tP", "<cmd>FloatermPrev<CR>", { desc = "Go previous terminal in Floaterm", noremap = true, silent = true })
