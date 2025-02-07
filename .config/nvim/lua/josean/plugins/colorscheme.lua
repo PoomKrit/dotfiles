@@ -14,7 +14,7 @@ return {
       local border = "#547998"
 
       require("tokyonight").setup({
-        style = "night",
+        style = vim.o.background == "light" and "day" or nil,
         on_colors = function(colors)
           colors.bg = bg
           colors.bg_dark = bg_dark
