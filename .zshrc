@@ -130,6 +130,7 @@ alias vi="nvim"
 alias v="nvim"
 alias nvimdiff="nvim -d"
 alias lg="lazygit"
+alias lzd="lazydocker"
 
 # Kubernetes aliases
 alias ks='kustomize'
@@ -143,7 +144,7 @@ alias h='helm'
 # Development tools
 alias python='python3'
 alias dk='docker'
-alias olm='ollama'
+# alias olm='ollama' -- move to docker
 alias pdm='podman'
 alias j='jobs'
 
