@@ -111,10 +111,10 @@ return {
             -- { "<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete or Close Buffer  (Confirm)" },
 
             -- Snacks Picker
-            { "<leader>pf", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)" },
-            { "<leader>pc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-            { "<leader>pg", function() require("snacks").picker.grep() end, desc = "Grep word" },
-            { "<leader>pw", function() require("snacks").picker.grep_word() end, desc = "Search Visual selection or Word", mode = { "n", "x" } },
+            { "<leader>pf", function() require("snacks").picker.files({ hidden = true }) end, desc = "Find Files (Including Hidden)" },
+            { "<leader>pc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config"), hidden = true }) end, desc = "Find Config File (Including Hidden)" },
+            { "<leader>pg", function() require("snacks").picker.grep({ hidden = true }) end, desc = "Grep word (Including Hidden Files)" },
+            { "<leader>pw", function() require("snacks").picker.grep_word({ hidden = true }) end, desc = "Search Visual Selection or Word (Including Hidden Files)", mode = { "n", "x" } },
             { "<leader>pk", function() require("snacks").picker.keymaps({ layout = "ivy" }) end, desc = "Search Keymaps (Snacks Picker)" },
             { "<leader>pb", function() require("snacks").picker.buffers() end, desc = "List all buffers" },
 
