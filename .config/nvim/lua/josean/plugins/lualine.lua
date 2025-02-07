@@ -1,6 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "williamboman/mason.nvim",
+  },
   config = function()
 
     local colors = {
@@ -49,6 +52,27 @@ return {
 
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local mason_registry = require("mason-registry")
+
+    -- Function to check for LSP updates
+    local function check_lsp_updates()
+      local outdated_servers = {}
+      for _, package in ipairs(mason_registry.get_installed_packages()) do
+        if package.spec.categories[1] == "LSP" then
+          local installed_version = package:get_installed_version()
+          local latest_version = package:get_latest_version()
+
+          if installed_version ~= latest_version then
+            table.insert(outdated_servers, package.name)
+          end
+        end
+      end
+
+      if #outdated_servers > 0 then
+        return "󰑓 LSP Updates: " .. table.concat(outdated_servers, ", ")
+      end
+      return "" -- No updates available
+    end
 
     -- configure lualine with modified theme
     lualine.setup({
@@ -61,6 +85,10 @@ return {
             lazy_status.updates,
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
+          },
+          {
+            check_lsp_updates, -- Add LSP update checker
+            color = { fg = "#ff4a4a" }, -- Red color for alert
           },
           { "encoding" },
           { "fileformat" },
