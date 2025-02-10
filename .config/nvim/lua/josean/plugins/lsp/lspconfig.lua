@@ -213,6 +213,18 @@ return {
           },
         })
       end,
+			["pyright"] = function()
+				lspconfig.pyright.setup {
+					capabilities = capabilities,
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "basic", -- or "off", "strict"
+							},
+						},
+					},
+				}
+			end,
 		})
 	end,
 }
