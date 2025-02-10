@@ -42,3 +42,8 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- fold settings
+opt.foldmethod = "indent"
+opt.foldcolumn = "1" -- enable fold column on the left
+opt.foldlevel = 99 -- enable indent folding to open fold in default
