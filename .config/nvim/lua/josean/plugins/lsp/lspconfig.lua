@@ -192,6 +192,27 @@ return {
 					},
 				})
 			end,
+      ["yamlls"] = function()
+        lspconfig["yamlls"].setup({
+          capabilities = capabilities,
+          settings = {
+            yaml = {
+              schemaStore = {
+                enable = true,
+                url = "https://www.schemastore.org/api/json/catalog.json",
+              },
+              validate = true,
+              completion = true,
+              format = {
+                enable = true,
+              },
+              foldingRange = {
+                enable = false, -- Disable folding support to prevent the error
+              },
+            },
+          },
+        })
+      end,
 		})
 	end,
 }
