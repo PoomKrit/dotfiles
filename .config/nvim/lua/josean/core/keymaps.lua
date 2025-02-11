@@ -93,7 +93,7 @@ keymap.set("n", "<leader>cP", ":YankDir<CR>", { desc = "Copy directory path" })
 -- keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
 -- keymap.set("n", "<leader>fw", "<cmd>Telescope live_grep<cr>", { desc = "Find string or word in current work directory" })
 -- keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in current work directory" })
-keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+-- keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 -- keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find buffers in cwd" })
 
 -- keymaps for auto-sessions
