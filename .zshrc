@@ -226,6 +226,6 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-TRAPEXIT() {
-  tmux run-shell ~/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
-}
+# TRAPEXIT() {
+#   tmux run-shell ~/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
+# }
