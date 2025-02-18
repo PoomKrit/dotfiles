@@ -10,6 +10,10 @@ return {
                 enabled = true,
                 layout = {
                     cycle = false,
+                },
+                filters = { -- 👈 This ensures hidden files are displayed
+                    hide_dotfiles = false, -- Show dotfiles (e.g., .git, .config, .env)
+                    hide_gitignored = false, -- Show git-ignored files
                 }
             },
             quickfile = {
@@ -90,15 +94,7 @@ return {
                 sections = {
                     { section = "header" },
                     { section = "keys", gap = 1, padding = 1 },
-                    { section = "startup" },
-                    {
-                        section = "terminal",
-                        cmd = "ascii-image-converter ~/Desktop/Others/profiles.JPG -C -c",
-                        random = 10,
-                        pane = 2,
-                        indent = 4,
-                        height = 30,
-                    },
+                    { section = "startup", },
                 },
             },
         },
@@ -106,24 +102,26 @@ return {
         keys = {
             { "<leader>lg", function() require("snacks").lazygit() end, desc = "Lazygit" },
             { "<leader>gl", function() require("snacks").lazygit.log() end, desc = "Lazygit Logs" },
-            { "<leader>es", function() require("snacks").explorer() end, desc = "Open Snacks Explorer" },
+            { "<leader>es", function() require("snacks").explorer({ hidden = true }) end, desc = "Open Snacks Explorer (Show Hidden Files)" },
             { "<leader>rN", function() require("snacks").rename.rename_file() end, desc = "Fast Rename Current File" },
             -- { "<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete or Close Buffer  (Confirm)" },
 
             -- Snacks Picker
             { "<leader>pf", function() require("snacks").picker.files({ hidden = true }) end, desc = "Find Files (Including Hidden)" },
             { "<leader>pc", function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config"), hidden = true }) end, desc = "Find Config File (Including Hidden)" },
+            { "<leader>pr", function() require("snacks").picker.recent() end, desc = "Open Recent files" },
             { "<leader>pg", function() require("snacks").picker.grep({ hidden = true }) end, desc = "Grep word (Including Hidden Files)" },
             { "<leader>pw", function() require("snacks").picker.grep_word({ hidden = true }) end, desc = "Search Visual Selection or Word (Including Hidden Files)", mode = { "n", "x" } },
             { "<leader>pk", function() require("snacks").picker.keymaps({ layout = "ivy" }) end, desc = "Search Keymaps (Snacks Picker)" },
             { "<leader>pb", function() require("snacks").picker.buffers() end, desc = "List all buffers" },
+            { "<leader>ph", function() require("snacks").picker.help() end, desc = "Help Pages" },
+            -- { "<leader>vh", function() require("snacks").picker.help() end, desc = "Help Pages" },
 
             -- Git Stuff
-            { "<leader>gbr", function() require("snacks").picker.git_branches({ layout = "select" }) end, desc = "Pick and Switch Git Branches" },
+            { "<leader>gb", function() require("snacks").picker.git_branches({ layout = "select" }) end, desc = "Pick and Switch Git Branches" },
 
             -- Other Utils
             { "<leader>th" , function() require("snacks").picker.colorschemes({ layout = "ivy" }) end, desc = "Pick Color Schemes"},
-            -- { "<leader>vh", function() require("snacks").picker.help() end, desc = "Help Pages" },
         }
     },
     -- NOTE: todo comments w/ snacks
@@ -132,8 +130,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         optional = true,
         keys = {
-            { "<leader>pt", function() require("snacks").picker.todo_comments() end, desc = "Todo" },
-            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+            { "<leader>pt", function() require("snacks").picker.todo_comments({ hidden = true }) end, desc = "Todo" },
+            { "<leader>pT", function() require("snacks").picker.todo_comments({ hidden = true, keywords = { "TODO", "HACK", "NOTE" } }) end, desc = "Todo/Hack/Note" },
         },
     }
 }
