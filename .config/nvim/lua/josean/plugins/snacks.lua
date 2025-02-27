@@ -14,7 +14,7 @@ return {
                 filters = { -- 👈 This ensures hidden files are displayed
                     hide_dotfiles = false, -- Show dotfiles (e.g., .git, .config, .env)
                     hide_gitignored = false, -- Show git-ignored files
-                }
+                },
             },
             quickfile = {
                 enabled = true,
@@ -97,6 +97,28 @@ return {
                     { section = "startup", },
                 },
             },
+            image = {
+                enabled = true,
+                doc = {
+                    inline = vim.g.neovim_mode == "skitty" and true or false,
+                    float = true,  -- Use floating window for image preview
+                    -- only_render_image_at_cursor = true
+                    max_width = vim.g.neovim_mode == "skitty" and 20 or 25,  -- Slightly reduce width
+                    max_height = vim.g.neovim_mode == "skitty" and 10 or 12, -- Slightly reduce height
+                    border = "rounded",  -- Add a border to define window edges
+                    padding = 1,  -- Reduce padding to prevent excessive space
+
+                    -- Fine-tune floating window position
+                    -- float_opts = {
+                    --     relative = "cursor",  -- Position relative to the cursor
+                    --     row = 2,              -- Move further down
+                    --     col = 8,              -- Move further to the right
+                    --     anchor = "NW",        -- Anchor top-left corner of the window
+                    --     focusable = false,    -- Prevent accidental focus on the image window
+                    --     style = "minimal",    -- Prevent additional decorations
+                    -- },
+                },
+            }
         },
         -- NOTE: Keymaps
         keys = {
