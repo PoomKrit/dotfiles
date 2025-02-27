@@ -131,6 +131,7 @@ alias v="nvim"
 alias nvimdiff="nvim -d"
 alias lg="lazygit"
 alias lzd="lazydocker"
+alias kp="keepassxc-cli"
 
 # Kubernetes aliases
 alias ks='kustomize'
