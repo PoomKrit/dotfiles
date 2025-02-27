@@ -14,13 +14,13 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
 
--- increment/decrement numbers
--- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
--- keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
-
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>V", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<M-=>", "5<C-w>+", { desc = "Increment Pane Height" })
+keymap.set("n", "<M-->", "5<C-w>-", { desc = "Decrement Pane Height" })
+keymap.set("n", "<M-[>", "5<C-w>>", { desc = "Increment Pane Width" })
+keymap.set("n", "<M-]>", "5<C-w><", { desc = "Decrement Pane Width" })
 keymap.set("n", "<leader>=", "<C-w>=", { desc = "Set equally pane" })
 keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new file vertically" })
 keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new file horizontally" })
@@ -32,9 +32,9 @@ keymap.set("n", "T", "gg", { desc = "Go to top page in normal mode" })
 keymap.set("x", "T", "gg", { desc = "Go to top page in visual mode" })
 keymap.set("n", "<M-`>", "<C-w>w", { desc = "Move to other pane" })
 keymap.set("n", "<M-t>", ":tabnew<CR>", { desc = "Create new tab" })
-keymap.set("n", "<M-]>", ":tabnext<CR>", { desc = "Move to other tab" })
-keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move to other tab" })
 keymap.set("n", "<M-r>", "<C-w>r", { desc = "Swap pane" })
+-- keymap.set("n", "<M-]>", ":tabnext<CR>", { desc = "Move to other tab" })
+-- keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move to other tab" })
 -- keymap.set("n", "<M-h>", "<C-w>h", { desc = "Move to left pane" })
 -- keymap.set("n", "<M-l>", "<C-w>l", { desc = "Move to right pane" })
 -- keymap.set("n", "<M-k>", "<C-w>k", { desc = "Move to up pane" })
@@ -47,6 +47,8 @@ keymap.set("n", "<M-.>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-,>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
 keymap.set("n", "<M-W>", ":bd!<CR>", { desc = "Force close buffer" })
+keymap.set("n", "<M-{>", ":BufferLineMovePrev<CR>", { desc = "Move current buffer to left" })
+keymap.set("n", "<M-}>", ":BufferLineMoveNext<CR>", { desc = "Move current buffer to right" })
 keymap.set("n", "dt", ":diffthis<CR>", { desc = "Select current pane to diff mode" })
 keymap.set("n", "do", ":diffoff<CR>", { desc = "Quit from diff mode" })
 

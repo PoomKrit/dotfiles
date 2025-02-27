@@ -1,9 +1,15 @@
 
+# font-family = MesloLGS Nerd Font Regular
+# font-family = MesloLGS Nerd Font Bold
+# font-family = MesloLGS Nerd Font Italic
+# font-family = MesloLGS Nerd Font Bold Italic
 font-family = MesloLGS Nerd Font Mono
+# font-family = DejaVu Sans Mono
 # font-family = BerkeleyMono Nerd Font
-# # font-family = Iosevka Nerd Font
+# font-family = Iosevka Nerd Font
 # font-family = SFMono Nerd Font 
-font-size = 20
+# font-family = Noto Sans Mono
+font-size = 15
 theme = GruvboxDarkHard
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
@@ -13,9 +19,10 @@ adjust-cell-height = 35%
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
+fullscreen = true
 window-padding-balance = true 
 window-save-state = always
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
 window-colorspace = "display-p3"
 background = 1C2021
 # foreground = d4be98
