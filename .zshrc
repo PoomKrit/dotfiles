@@ -172,9 +172,9 @@ alias randall="LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 100 |xargs"
 
 # Utility aliases
 alias yp='pwd | pbcopy ; pbpaste'
-alias ls="eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions"
-alias lsnc="eza --color=always --long --git --icons=never --no-filesize --no-time --no-user --no-permissions"
-alias l="eza --all --color=always --long --git --icons=always"
+alias ls="eza --color=always --long --git --icons=always --no-filesize --no-time --no-user --no-permissions --sort=created"
+alias lsnc="eza --color=always --long --git --icons=never --no-filesize --no-time --no-user --no-permissions --sort=created"
+alias l="eza --all --color=always --long --git --icons=always --sort=created"
 
 # Prompting AWS Profile
 alias awho="echo Current AWS Profile: \${AWS_PROFILE:-default}"
