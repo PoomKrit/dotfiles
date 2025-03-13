@@ -17,14 +17,15 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- window management
 keymap.set("n", "<leader>v", "<C-w>v", { desc = "Split window vertically" })
 keymap.set("n", "<leader>V", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<M-=>", "5<C-w>+", { desc = "Increment Pane Height" })
-keymap.set("n", "<M-->", "5<C-w>-", { desc = "Decrement Pane Height" })
-keymap.set("n", "<M-]>", "5<C-w>>", { desc = "Increment Pane Width" })
-keymap.set("n", "<M-[>", "5<C-w><", { desc = "Decrement Pane Width" })
+keymap.set("n", "<M-=>", "2<C-w>+", { desc = "Increment Pane Height" })
+keymap.set("n", "<M-->", "2<C-w>-", { desc = "Decrement Pane Height" })
+keymap.set("n", "<M-+>", "5<C-w>>", { desc = "Increment Pane Width" })
+keymap.set("n", "<M-_>", "5<C-w><", { desc = "Decrement Pane Width" })
 keymap.set("n", "<leader>=", "<C-w>=", { desc = "Set equally pane" })
 keymap.set("n", "<leader>\\", ":vnew<CR>", { desc = "Open new file vertically" })
 keymap.set("n", "<leader>-", ":new<CR>", { desc = "Open new file horizontally" })
 keymap.set("n", "<leader>E", ":enew<CR>", { desc = "Open new page file" })
+
 
 -- switch buffer pane
 keymap.set("n", "W", ":w<CR>", { desc = "Save file" })
@@ -104,6 +105,9 @@ keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for
 
 -- keymaps for markdownpreview
 keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
+
+-- keymap for test typing
+keymap.set("n", "<leader>tp", "<cmd>Typr<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
 
 -- Keymap for black hole register deletes
 -- Delete without saving to clipboard
