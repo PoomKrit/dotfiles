@@ -146,6 +146,7 @@ alias h='helm'
 alias python='python3'
 alias dk='docker'
 # alias olm='ollama' -- move to docker
+alias clm='colima'
 alias pdm='podman'
 alias j='jobs'
 
