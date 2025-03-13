@@ -11,7 +11,7 @@ select_base_url() {
         1)
             BASE_URL="gitlab.sfpci.aws.accor.net"
             EXPORT_PATH="$HOME/git/$BASE_URL"
-            GHORG_TOKEN="$(op item get "Accor CTA" --format json | jq -r '.fields[] | select(.label == "private token sfpci - molecule") | .value')"
+            GHORG_TOKEN="$(op item get "Accor CTA" --format json | jq -r '.fields[] | select(.label == "PCI Token") | .value')"
             ;;
         2)
             BASE_URL="gitlab.softfactory-accor.net"
