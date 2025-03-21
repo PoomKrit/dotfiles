@@ -48,8 +48,8 @@ keymap.set("n", "<M-]>", ":bn<CR>", { desc = "Go to next buffer" })
 keymap.set("n", "<M-[>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
 keymap.set("n", "<M-W>", ":bd!<CR>", { desc = "Force close buffer" })
-keymap.set("n", "<M-{>", ":BufferLineMovePrev<CR>", { desc = "Move current buffer to left" })
-keymap.set("n", "<M-}>", ":BufferLineMoveNext<CR>", { desc = "Move current buffer to right" })
+keymap.set("n", "<M-{>", ":tabprevious<CR>", { desc = "Move current buffer to left" })
+keymap.set("n", "<M-}>", ":tabnext<CR>", { desc = "Move current buffer to right" })
 keymap.set("n", "dt", ":diffthis<CR>", { desc = "Select current pane to diff mode" })
 keymap.set("n", "do", ":diffoff<CR>", { desc = "Quit from diff mode" })
 
@@ -79,10 +79,23 @@ vim.api.nvim_create_user_command("YankDir", function()
 	vim.fn.setreg("+", dir_path)
 	print("Copied directory: " .. dir_path)
 end, { desc = "Copy the directory path to the clipboard" })
+
+vim.api.nvim_create_user_command('YankFileName', function()
+    vim.fn.setreg('+', vim.fn.expand('%:t'))
+end, {})
+
+vim.api.nvim_create_user_command('OpenFileDir', function()
+    local filepath = vim.fn.expand('%:p')
+    if filepath ~= '' then
+        vim.fn.jobstart({ "open", "-R", filepath }, { detach = true })
+    end
+end, {})
+
 keymap.set("n", "<leader>a", ":Buffers<CR>", { desc = "Show all buffers" })
 keymap.set({ "n", "v" }, "y", '"+y', { desc = "Yank to clipboard for both normal and visual mode" })
 keymap.set("n", "<leader>cp", ":YankFilePath<CR>", { desc = "Copy file path" })
 keymap.set("n", "<leader>cP", ":YankDir<CR>", { desc = "Copy directory path" })
+keymap.set("n", "<leader>fd", ":OpenFileDir<CR>", { desc = "Open directory of current file" })
 
 -- keymap file-explorer
 -- keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
