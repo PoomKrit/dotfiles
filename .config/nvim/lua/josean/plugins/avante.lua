@@ -19,10 +19,14 @@ return {
     --   -- optional
     --   api_key_name = "DEEPSEEK_API_KEY",  -- default OPENAI_API_KEY if not set
     -- },
-    -- gemini = {
-    --   model = "gemini-1.5-pro-latest",
-    --   model = "gemini-1.5-flash-8b-latest",
-    -- },
+    gemini = {
+      -- model = "gemini-1.5-pro-latest",
+      model = "gemini-1.5-flash-8b-latest",
+      -- model = "gemini-2.0-flash"
+      -- model = "gemini-2.0-flash-001"
+      -- model = "gemini-2.0-flash-lite"
+      -- model = "gemini-2.0-flash-lite-001"
+    },
 		vendors = { -- may not needed
 			["ollama"] = {
 				__inherited_from = "openai",
