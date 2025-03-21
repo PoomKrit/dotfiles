@@ -1,0 +1,14 @@
+# Git authentication key for PCI
+[[ssh-keys]]
+item = "Gitlab PCI Private Key"
+vault = "Accor"
+
+# Git authentication key for Software Factory
+[[ssh-keys]]
+item = "Gitlab Private Key"
+vault = "Accor"
+
+# Git authentication key for Gitlab GlobalDots
+[[ssh-keys]]
+item = "GITLAB Key | GlobalDots"
+vault = "GlobalDots"
