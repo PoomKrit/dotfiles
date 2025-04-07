@@ -37,22 +37,31 @@ return {
         "docker_compose_language_service",
         "html",
         "cssls",
-        "tailwindcss",
-        "svelte",
         "lua_ls",
         "graphql",
         "pyright",
+        "jsonnet_ls",
+        "jsonlint",
+        "jsonld_ls",
+        "json-to-struct",
+        "jsonls",
+        "jqls",
+        "jq",
+        "fixjson",
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
         -- "isort", -- python formatter
         -- "black", -- python formatter
         -- "pylint", -- python linter
+        "prettier", -- prettier formatter
+        "stylua", -- lua formatter
         "eslint_d", -- js linter
+        "tflint", -- terraform linter
+        "tfsec", -- terraform security scanner
+        "hadolint", -- dockerfile linter
       },
     })
   end,
