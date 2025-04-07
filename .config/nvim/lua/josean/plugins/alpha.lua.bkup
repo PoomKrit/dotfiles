@@ -1,3 +1,16 @@
+-- A customizable dashboard plugin for Neovim.
+-- Provides a visually appealing and highly configurable dashboard
+-- for displaying information and launching commands.  This
+-- configuration sets up a custom dashboard theme with
+-- specific buttons for common tasks like creating new files,
+-- using Mason, Lazy Plugin Manager, file explorer,
+-- searching files and words, restoring sessions, and quitting.
+-- The theme includes a custom header with ASCII art.
+-- Note:  This configuration assumes you have the necessary
+-- plugins (Mason, Lazy, NvimTree, Telescope) installed and
+-- configured.  Also, the keybindings used here (e.g., "SPC m")
+-- are specific to the user's keybindings configuration.
+
 return {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
