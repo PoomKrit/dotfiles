@@ -15,7 +15,7 @@ return {
         local notify = require("notify")
 
         notify.setup({
-          render = "simple", -- Render style for notifications
+          render = "wrapped-compact", -- Render style for notifications
           timeout = 5000, -- Duration in milliseconds (e.g., 5000ms = 5 seconds)
           sticky = true, -- Notifications stay visible until dismissed
           level = "info", -- Options: "trace", "debug", "info", "warn", "error"
