@@ -5,7 +5,8 @@ select_base_url() {
     echo "Select the base URL for cloning:"
     echo "1) gitlab.sfpci.aws.accor.net"
     echo "2) gitlab.softfactory-accor.net"
-    read -rp "Enter your choice (1 or 2): " choice
+    echo "3) gitlab.com"
+    read -rp "Enter your choice (1 - 3): " choice
 
     case $choice in
         1)
@@ -18,8 +19,13 @@ select_base_url() {
             EXPORT_PATH="$HOME/git/$BASE_URL"
             GHORG_TOKEN="$(op item get "Gitlab Soft-Factory" --format json | jq -r '.fields[] | select(.label == "token admin") | .value')"
             ;;
+        3)
+            BASE_URL="gitlab.com"
+            EXPORT_PATH="$HOME/git/$BASE_URL"
+            GHORG_TOKEN="$(op item get "GlobalDots | Gitlab Access Token" --format json | jq -r '.fields[] | select(.label == "token") | .value')"
+            ;;
         *)
-            echo "Invalid choice. Please run the script again and select 1 or 2."
+            echo "Invalid choice. Please run the script again and select 1 to 3."
             exit 1
             ;;
     esac
