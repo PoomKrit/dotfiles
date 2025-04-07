@@ -4,5 +4,7 @@
 services:
   "gitlab.softfactory": "gitlab:gitlab.softfactory-accor.net"
   "gitlab.sfpci": "gitlab:gitlab.sfpci.aws.accor.net"
+  "gitlab.com": "gitlab:gitlab.com"
+  "github.com": "github:github.com"
 os:
   openLink: open "$(echo "{{link}}" | sed 's/%2F/\//g')"
