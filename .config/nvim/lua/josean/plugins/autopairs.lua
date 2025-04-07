@@ -1,4 +1,5 @@
 -- Automatically inserts matching pairs (e.g., (), {}, [], "", '').
+
 return {
 	"windwp/nvim-autopairs",
 	event = { "InsertEnter" },
