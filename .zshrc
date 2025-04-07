@@ -27,6 +27,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Oh-My-Zsh plugins
 plugins=(
   git
+  tmux
   bundler
   dotenv
   macos
@@ -37,6 +38,7 @@ plugins=(
   vscode
   aws
   alias-finder
+  helm
   kubectl
   kubectx
 )
@@ -137,10 +139,7 @@ alias kp="keepassxc-cli"
 alias ks='kustomize'
 alias kx='kubectx'
 alias kns='echo 'NAMESPACE'\\n;kubectl config view --minify -o jsonpath={..namespace};echo'
-alias kcns='kubectl config set-context --current --namespace'
 alias kctx='kubectl config current-context'
-alias e='eksctl'
-alias h='helm'
 
 # Development tools
 alias python='python3'
@@ -163,13 +162,52 @@ alias cflt='confluent'
 alias gt='git tag'
 alias gmj='gitmoji'
 
+# Terragrunt
+alias tgi='terragrunt init'
+alias tgp='terragrunt plan'
+alias tga='terragrunt apply'
+alias tgaa='terragrunt apply -auto-approve'
+
 # Random string generators
-alias randA="LC_CTYPE=C tr -dc A-Z </dev/urandom | head -c 100 |xargs"
-alias randAa="LC_CTYPE=C tr -dc A-Za-z </dev/urandom | head -c 100 |xargs"
-alias randa="LC_CTYPE=C tr -dc a-z </dev/urandom | head -c 100 |xargs"
-alias randA0="LC_CTYPE=C tr -dc A-Z0-9 </dev/urandom | head -c 100 |xargs"
-alias rand0="LC_CTYPE=C tr -dc 0-9 </dev/urandom | head -c 100 |xargs"
-alias randall="LC_CTYPE=C tr -dc A-Za-z0-9 </dev/urandom | head -c 100 |xargs"
+randA() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="up" --len="$length"
+}
+
+randa() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="low" --len="$length"
+}
+
+rand0() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="num" --len="$length"
+}
+
+randAa() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="up,low" --len="$length"
+}
+
+randA0() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="up,num" --len="$length"
+}
+
+randa0() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="low,num" --len="$length"
+}
+
+randAa0() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="up,low,num" --len="$length"
+}
+
+randall() {
+  local length=${1:-16}  # Default length to 16 if not provided
+  generate_random_key --type="up,low,num,sp" --len="$length"
+}
 
 # Utility aliases
 alias yp='pwd | pbcopy ; pbpaste'
@@ -231,3 +269,86 @@ function y() {
 # TRAPEXIT() {
 #   tmux run-shell ~/.config/tmux/plugins/tmux-resurrect/scripts/save.sh
 # }
+function gi() { curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+# Generate random key
+generate_random_key() {
+  local length=16  # Default length
+  local include_lower=0
+  local include_upper=0
+  local include_number=0
+  local include_special=0
+  local charset=""
+  local result=""
+
+  # Help message
+  if [[ "$1" == "--help" ]]; then
+    cat <<EOF
+Usage: generate_random_key [OPTIONS]
+
+Options:
+  --type="low,up,num,sp"   Include specific character types:
+       - low : lowercase letters (a-z)
+       - up  : uppercase letters (A-Z)
+       - num : numbers (0-9)
+       - sp  : special characters (!@#\$%^&* etc.)
+  --len=N | --length=N       Set length of the key (default: 16)
+  --help                     Show this help message
+
+Examples:
+  generate_random_key --type="low,up,num" --len=12
+  generate_random_key --type="low,num,sp" --length=8
+EOF
+    return 0
+  fi
+
+  # Parse arguments
+  while [[ "$1" != "" ]]; do
+    case $1 in
+      --type=*)
+        local types="${1#*=}"
+        [[ "$types" =~ "low" ]] && include_lower=1
+        [[ "$types" =~ "up" ]] && include_upper=1
+        [[ "$types" =~ "num" ]] && include_number=1
+        [[ "$types" =~ "sp" ]] && include_special=1
+        ;;
+      --len=*|--length=*)
+        length="${1#*=}"
+        if ! [[ "$length" =~ '^[0-9]+$' ]]; then
+          cat <<EOF
+Error: Invalid length. Please enter a numeric value.
+EOF
+          return 1
+        fi
+        ;;
+      *)
+        cat <<EOF
+Invalid option: $1
+Use --help to see available options.
+EOF
+        return 1
+        ;;
+    esac
+    shift
+  done
+
+  # Construct character set
+  [[ $include_lower -eq 1 ]] && charset+="abcdefghijklmnopqrstuvwxyz"
+  [[ $include_upper -eq 1 ]] && charset+="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  [[ $include_number -eq 1 ]] && charset+="0123456789"
+  [[ $include_special -eq 1 ]] && charset+="!@#\$%^&*()-_=+[]{};:'\",.<>?/\\|"
+
+  if [[ -z "$charset" ]]; then
+    cat <<EOF
+Error: No character type selected. Use --type="low,up,num,sp"
+EOF
+    return 1
+  fi
+
+  # Generate random key using zsh's proper indexing
+  for ((i = 0; i < length; i++)); do
+    result+="${charset[$((RANDOM % ${#charset} + 1))]}"
+  done
+
+  echo "$result"
+}
