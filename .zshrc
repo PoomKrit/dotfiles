@@ -41,6 +41,9 @@ plugins=(
   helm
   kubectl
   kubectx
+  istioctl
+  iterm2
+  jsontools
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -164,8 +167,11 @@ alias gmj='gitmoji'
 
 # Terragrunt
 alias tgi='terragrunt init'
+alias tgv='terragrunt validate'
 alias tgp='terragrunt plan'
 alias tga='terragrunt apply'
+alias tgd='terragrunt destroy'
+alias tgo='terragrunt output'
 alias tgaa='terragrunt apply -auto-approve'
 
 # Random string generators
