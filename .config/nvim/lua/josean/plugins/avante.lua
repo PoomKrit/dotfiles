@@ -8,20 +8,29 @@ return {
 	version = false, -- set this if you want to always pull the latest change
 	opts = {
 		provider = "deepseek",
-    auto_suggestions_provider = "deepseek", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+    -- auto_suggestions_provider = "deepseek", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
     openai = { -- Since deepseek itself cannot be found. So, there's a workaround on setup the openai with deepseek api url instead
-      -- model = "deepseek-reasoner", -- R1 model
-      endpoint = "http://127.0.0.1:11434/v1",
-      model = "deepseek-r1:8b",
+      endpoint = "https://api.deepseek.com/v1",
+      model = "deepseek-chat",
       timeout = 30000, -- Timeout in milliseconds
       temperature = 0,
       max_tokens = 4096,
       -- optional
       api_key_name = "DEEPSEEK_API_KEY",  -- default OPENAI_API_KEY if not set
     },
+    -- openai = { -- Since deepseek itself cannot be found. So, there's a workaround on setup the openai with deepseek api url instead
+    --   -- model = "deepseek-reasoner", -- R1 model
+    --   endpoint = "http://127.0.0.1:11434/v1",
+    --   model = "deepseek-r1:8b",
+    --   timeout = 30000, -- Timeout in milliseconds
+    --   temperature = 0,
+    --   max_tokens = 4096,
+    --   -- optional
+    --   api_key_name = "DEEPSEEK_API_KEY",  -- default OPENAI_API_KEY if not set
+    -- },
     gemini = {
-      -- model = "gemini-1.5-pro-latest",
       model = "gemini-1.5-flash-8b-latest",
+      -- model = "gemini-1.5-pro-latest",
       -- model = "gemini-2.0-flash"
       -- model = "gemini-2.0-flash-001"
       -- model = "gemini-2.0-flash-lite"
@@ -37,8 +46,9 @@ return {
 			["deepseek"] = {
 				__inherited_from = "openai",
         api_key_name = "DEEPSEEK_API_KEY",  -- default OPENAI_API_KEY if not set
-        endpoint = "https://api.deepseek.com/v1",
+        endpoint = "https://api.deepseek.com",
         model = "deepseek-chat",
+        disable_tools = true,
 			},
 		},
 	},
