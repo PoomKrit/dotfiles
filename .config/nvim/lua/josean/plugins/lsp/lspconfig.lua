@@ -74,8 +74,11 @@ return {
 		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+			-- local hl = "DiagnosticSign" .. type
+			-- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      local name = "DiagnosticSign" .. type
+      vim.api.nvim_set_hl(0, name, { default = true, link = name })
+      vim.fn.sign_define(name, { text = icon, texthl = name, numhl = name })
 		end
 
 		mason_lspconfig.setup_handlers({

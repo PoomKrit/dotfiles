@@ -41,13 +41,8 @@ return {
         "graphql",
         "pyright",
         "jsonnet_ls",
-        "jsonlint",
-        "jsonld_ls",
-        "json-to-struct",
         "jsonls",
         "jqls",
-        "jq",
-        "fixjson",
       },
     })
 
