@@ -4,7 +4,7 @@ return {
   version = "*",
   opts = {
     options = {
-      mode = "buffers", -- Try "buffers" or "tabs"
+      mode = "tabs", -- Try "buffers" or "tabs"
       separator_style = "slant", -- Try different styles
       -- Other useful options:
       always_show_bufferline = true,
