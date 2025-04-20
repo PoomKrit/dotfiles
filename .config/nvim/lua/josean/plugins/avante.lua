@@ -42,6 +42,7 @@ return {
 				api_key_name = "",
 				endpoint = "http://127.0.0.1:11434/v1",
 				model = "deepseek-r1:8b",
+        disable_tools = true,
 			},
 			["deepseek"] = {
 				__inherited_from = "openai",
