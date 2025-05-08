@@ -44,12 +44,12 @@ keymap.set("n", "<C-d>", ":q<CR>", { desc = "Quit current window" })
 keymap.set("n", "<M-Q>", ":qa<CR>", { desc = "Quit all windows" })
 keymap.set("n", "<M-m>", "gcc", { desc = "Comment line" }) -- not working
 keymap.set("n", "<C-e>", ":e!<CR>", { desc = "Reset file" })
-keymap.set("n", "<M-]>", ":bn<CR>", { desc = "Go to next buffer" })
-keymap.set("n", "<M-[>", ":bp<CR>", { desc = "Go to previous buffer" })
 keymap.set("n", "<M-w>", ":bd<CR>", { desc = "Close buffer" })
 keymap.set("n", "<M-W>", ":bd!<CR>", { desc = "Force close buffer" })
-keymap.set("n", "<M-{>", ":tabprevious<CR>", { desc = "Move current buffer to left" })
-keymap.set("n", "<M-}>", ":tabnext<CR>", { desc = "Move current buffer to right" })
+keymap.set("n", "<M-}>", ":bn<CR>", { desc = "Go to next buffer" })
+keymap.set("n", "<M-{>", ":bp<CR>", { desc = "Go to previous buffer" })
+keymap.set("n", "<M-[>", ":tabprevious<CR>", { desc = "Move current buffer to left" })
+keymap.set("n", "<M-]>", ":tabnext<CR>", { desc = "Move current buffer to right" })
 keymap.set("n", "dt", ":diffthis<CR>", { desc = "Select current pane to diff mode" })
 keymap.set("n", "do", ":diffoff<CR>", { desc = "Quit from diff mode" })
 
@@ -117,7 +117,7 @@ keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore sessi
 keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
 
 -- keymaps for markdownpreview
-keymap.set("n", "<leader>md", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
+keymap.set("n", "<leader>m", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
 
 -- keymap for test typing
 keymap.set("n", "<leader>tp", "<cmd>Typr<CR>", { desc = "Open Markdown Preview", noremap = true, silent = true })
