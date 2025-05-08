@@ -147,6 +147,7 @@ alias kctx='kubectl config current-context'
 # Development tools
 alias python='python3'
 alias dk='docker'
+alias dki='docker images'
 # alias olm='ollama' -- move to docker
 alias clm='colima'
 alias pdm='podman'
@@ -173,6 +174,30 @@ alias tga='terragrunt apply'
 alias tgd='terragrunt destroy'
 alias tgo='terragrunt output'
 alias tgaa='terragrunt apply -auto-approve'
+
+# Mac setup for pomo as functions
+work() {
+  timer "$1"
+  osascript -e 'display notification "Pomodoro" with title "Work Timer is up! Take a Break 😊"'
+}
+
+rest() {
+  timer "$1"
+  osascript -e 'display notification "Pomodoro" with title "Break is over! Get back to work 😬"'
+}
+
+# Making it round
+pomo() {
+  echo "How many rounds you want to do?"
+  read count;
+  for i in {1..$count};
+  do
+          echo '' && work $1;
+          echo "Congrat on your good work! Starting the rest timer in 3 seconds";
+          sleep 3;
+          echo '' && rest $2;
+  done
+}
 
 # Random string generators
 randA() {
