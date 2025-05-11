@@ -44,6 +44,133 @@ return {
         "jsonls",
         "jqls",
       },
+      handlers = {
+        -- default
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+
+        ["terraformls"] = function()
+          lspconfig["terraformls"].setup({
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
+            on_attach = function(client, bufnr)
+              client.server_capabilities.documentFormattingProvider = true
+            end,
+            filetypes = { "terraform", "tf", "hcl" },
+            init_options = {
+              terraform = {
+                path = "/opt/homebrew/bin/terraform",
+                experimentalFeatures = {
+                  validateOnSave = true,
+                  completion = true,
+                },
+              },
+            },
+          })
+        end,
+
+        ["dockerls"] = function()
+          lspconfig["dockerls"].setup({
+            capabilities = capabilities,
+            on_attach = function()
+              print("Docker language server attached!")
+            end,
+            filetypes = { "dockerfile", "Dockerfile" },
+          })
+        end,
+
+        ["bashls"] = function()
+          lspconfig["bashls"].setup({
+            capabilities = capabilities,
+            on_attach = function()
+              print("Bash language server attached!")
+            end,
+            filetypes = { "sh", "bash", "zsh" },
+            root_dir = lspconfig.util.root_pattern(".git", vim.fn.getcwd()),
+          })
+        end,
+
+        ["svelte"] = function()
+          lspconfig["svelte"].setup({
+            capabilities = capabilities,
+            on_attach = function(client)
+              vim.api.nvim_create_autocmd("BufWritePost", {
+                pattern = { "*.js", "*.ts" },
+                callback = function(ctx)
+                  client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+                end,
+              })
+            end,
+          })
+        end,
+
+        ["graphql"] = function()
+          lspconfig["graphql"].setup({
+            capabilities = capabilities,
+            filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+          })
+        end,
+
+        ["emmet_ls"] = function()
+          lspconfig["emmet_ls"].setup({
+            capabilities = capabilities,
+            filetypes = {
+              "html", "typescriptreact", "javascriptreact",
+              "css", "sass", "scss", "less", "svelte"
+            },
+          })
+        end,
+
+        ["lua_ls"] = function()
+          lspconfig["lua_ls"].setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
+              },
+            },
+          })
+        end,
+
+        ["yamlls"] = function()
+          lspconfig["yamlls"].setup({
+            capabilities = capabilities,
+            settings = {
+              yaml = {
+                schemaStore = {
+                  enable = true,
+                  url = "https://www.schemastore.org/api/json/catalog.json",
+                },
+                validate = true,
+                completion = true,
+                format = { enable = true },
+                foldingRange = { enable = false },
+              },
+            },
+          })
+        end,
+
+        ["pyright"] = function()
+          lspconfig.pyright.setup({
+            capabilities = capabilities,
+            settings = {
+              python = {
+                analysis = {
+                  typeCheckingMode = "basic",
+                },
+              },
+            },
+          })
+        end,
+      },
     })
 
     mason_tool_installer.setup({
