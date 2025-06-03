@@ -28,7 +28,7 @@ keymap.set("n", "<leader>E", ":enew<CR>", { desc = "Open new page file" })
 
 
 -- switch buffer pane
-keymap.set("n", "S", ":w<CR>", { desc = "Save file" })
+-- keymap.set("n", "S", ":w<CR>", { desc = "Save file" })
 keymap.set("n", "T", "gg", { desc = "Go to top page in normal mode" })
 keymap.set("x", "T", "gg", { desc = "Go to top page in visual mode" })
 keymap.set("n", "<M-`>", "<C-w>w", { desc = "Move to other pane" })
